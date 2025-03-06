@@ -18,12 +18,30 @@
           </a>
         </li>
         <!-- Forms & Tables -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Notifikasi</span></li>
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Main</span></li>
           <!-- Forms -->
           <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-              <i class="menu-icon tf-icons bx bx-basket"></i>
+              <i class="menu-icon tf-icons bx bx-receipt"></i>
                 <div data-i18n="Posts">Pemesanan</div>
+            </a>
+            <ul class="menu-sub">
+              <li class="menu-item">
+                <a href="kategori.php" class="menu-link">
+                  <div data-i18n="Input groups">Status pesanan</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="kategori.php" class="menu-link">
+                  <div data-i18n="Input groups">Riwayat pemesanan</div>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-cart-alt"></i>
+                <div data-i18n="Posts">Produk</div>
             </a>
             <ul class="menu-sub">
               <li class="menu-item">
@@ -33,12 +51,32 @@
               </li>
               <li class="menu-item">
                 <a href="kategori.php" class="menu-link">
-                  <div data-i18n="Input groups">Status pesanan</div>
+                  <div data-i18n="Input groups">Kategori</div>
                 </a>
               </li>
               <li class="menu-item">
                 <a href="kategori.php" class="menu-link">
-                  <div data-i18n="Input groups">Riwayat pemesanan</div>
+                  <div data-i18n="Input groups">Mall</div>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="menu-header small text-uppercase"><span class="menu-header-text">Setting</span></li>
+          <!-- Forms -->
+          <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-user-circle"></i>
+                <div data-i18n="Posts">Akun</div>
+            </a>
+            <ul class="menu-sub">
+              <li class="menu-item">
+                <a href="kategori.php" class="menu-link">
+                  <div data-i18n="Input groups">Pengaturan akun</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="kategori.php" class="menu-link">
+                  <div data-i18n="Input groups">Logout</div>
                 </a>
               </li>
             </ul>

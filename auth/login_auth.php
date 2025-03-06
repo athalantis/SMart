@@ -23,8 +23,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 'type' => 'primary',
                 'message' => 'selamat datang kembali!'
             ];
-            // redirect ke dashboard
-            header('Location: ../dashboard.php');
+            // mengecek role 
+            if ($row["role"] === "admin") {
+                header('Location: ../pages-misc-under-maintenance.html');
+            } else {
+                header('Location: ../dashboard.php');
+            }
             exit();
         } else {
             $_SESSION['notification'] = [
