@@ -97,6 +97,14 @@ body{
     margin-bottom: -2px;
 }
 
+.border-style{
+    border: 1px solid rgb(106, 106, 106) so;
+    border-radius: 0px  !important;
+    padding: 0.5rem  !important;
+    background-color: #ffffff  !important;
+}
+
+/*footer color*/
 .footer-color{
     background-color: #5f5f5f !important;
 }
