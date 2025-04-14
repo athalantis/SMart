@@ -1,0 +1,153 @@
+html{
+    position: relative;
+}
+/*style default*/
+body{
+    min-height: 2000px;
+    font-family:'poppins', Arial, sans-serif;
+    font-size: medium;
+    margin-top: 68px;
+}
+
+/*warna utama*/
+.main-color-f{
+  color: #ff4400 !important;
+}
+/*warna utama*/
+.main-color{
+    background-color: #ff4400 !important;
+}
+/*warna utama*/
+.main-color2{
+    background-color: #df300097 !important;
+} 
+
+/*warna utama border*/
+.border-color{
+    border-color: #ff4400 !important;
+}
+
+/*warna backgroud produk*/
+.bg-produk{
+    background-color: #d2d0d03d !important;
+} 
+
+
+/*style banner awal*/
+.banner{
+    height: 92vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../img/banner.jpg);
+    background-size: cover;
+    background-position:bottom 75% center;
+}
+/*style banner akhir*/
+
+/*style card awal*/
+.card a {
+    text-decoration: none;
+}
+
+.hovered-card{
+  transition: 0.3s ease;
+  box-shadow: 0.3s ease;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.hovered-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+}
+
+.hovered-card-service{
+  transition: 0.3s ease;
+}
+
+.hovered-card-service:hover {
+  transform: scale(1.1);
+}
+
+.hovered-social{
+  transition: 0.3s ease;
+}
+
+.hovered-social:hover {
+  transform: scale(1.2);
+  color: #ff4400;
+}
+
+.card-text, .card-price, .card-location, .card-rating {
+    margin: 0.25rem 0 0 0; 
+    color: black;
+}   
+
+.card-title{
+    margin-bottom: 0rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding-left: 0.5rem;
+    color:rgb(255, 255, 255);
+    background-color: rgb(255, 68, 0);
+    border-radius: 0 0 1rem 0;
+}
+
+.card-text {
+    font-size: 1rem; 
+    margin-top:-0.5rem;
+  }
+
+.card-price {
+    font-size: 1.5rem;  
+    font-weight: bold;
+  }
+/*style card akhir*/
+
+/*style icons awal*/
+.icon-service{
+  width: 90px;
+  height: 90px;
+  border: solid #ffffff 2px ;
+  border-radius: 50%;
+}
+/*style icons akhir*/
+
+.bg{
+    margin-bottom: -2px;
+}
+
+/*footer color*/
+.footer-color{
+    background-color: #5f5f5f !important;
+}
+.footer-color2{
+    background-color: #2c2c2c !important;
+}
+
+/* style cate awal */
+.card-cate a{
+    color: black;
+    text-decoration: none;
+}
+
+.card-cate{
+  transition: 0.3s ease;
+}
+
+.card-cate:hover{
+    color: #ff4400;
+    text-decoration: none;
+    transform: scale(1.1);
+}
+
+.img-size{
+    width: 100%;
+    border-radius: 10px ;
+}
+/* style cate akhir */
+
+/* style sticky top awal */
+.sticky-top {
+  top: 52px; 
+}
+/* style sticky top akhir */
