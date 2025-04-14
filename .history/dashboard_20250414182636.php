@@ -1,16 +1,31 @@
 <?php
-include 'UserLayouts/header.php';
-
-// Use existing config.php for database connection
+session_start();
 include 'config.php';
+include '.includes/header.php';
 
-// Fetch products from the database
-$query = "SELECT produk_id, nama_produk, harga, stok, gambar_produk FROM produk";
-$result = mysqli_query($conn, $query);
+// Pastikan pengguna sudah login
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php"); // Redirect jika belum login
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+
+// Query untuk mendapatkan daftar pemesanan berdasarkan user_id
+$query = "
+    SELECT p.pemesanan_id, p.tanggal_pemesanan, p.jumlah_pemesanan, p.status_pemesanan, 
+           pr.nama_produk, pr.harga, (p.jumlah_pemesanan * pr.harga) AS total_harga
+    FROM pemesanan p
+    INNER JOIN produk pr ON p.produk_id = pr.produk_id
+    WHERE p.user_id = ?
+    ORDER BY p.tanggal_pemesanan DESC
+";
+
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
-
-
-    <!-- Navbar akhir -->
 
     <!-- banner awal -->
     <div class="container-fluid banner d-flex align-items-center">

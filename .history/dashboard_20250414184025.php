@@ -13,6 +13,7 @@ $result = mysqli_query($conn, $query);
     <!-- Navbar akhir -->
 
     <!-- banner awal -->
+     <title>toko saya</title>
     <div class="container-fluid banner d-flex align-items-center">
         <div class="container">
             <p class="text-white text-center mb-1 fs-2">Selamat Datang Di Website Kami<i class="bi bi-emoji-smile"></i></p>

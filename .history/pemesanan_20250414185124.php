@@ -28,7 +28,8 @@ $result = $stmt->get_result();
 ?>
 
 <div class="container mt-5">
-<br>  <br>  
+
+<h1>imgaine</h1>
     <div class="card shadow">
         <div class="card-header bg-primary text-white">
             <h3 class="mb-0">Riwayat Pemesanan Anda</h3>
@@ -210,10 +211,6 @@ $result = $stmt->get_result();
             </div>
         </div>
     </div>
-    <br><br><br>
-
-    <br><br><br>
-
 </div>
 
 <!-- Help Modal -->
@@ -260,7 +257,6 @@ $result = $stmt->get_result();
         <i class="bi bi-question-lg"></i>
     </button>
 </div>
-
 <?php
 include 'UserLayouts/footer.php';
 

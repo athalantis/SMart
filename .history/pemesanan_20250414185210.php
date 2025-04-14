@@ -210,10 +210,6 @@ $result = $stmt->get_result();
             </div>
         </div>
     </div>
-    <br><br><br>
-
-    <br><br><br>
-
 </div>
 
 <!-- Help Modal -->
@@ -260,7 +256,8 @@ $result = $stmt->get_result();
         <i class="bi bi-question-lg"></i>
     </button>
 </div>
-
+<br>
+<br>
 <?php
 include 'UserLayouts/footer.php';
 

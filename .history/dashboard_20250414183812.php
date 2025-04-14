@@ -1,5 +1,5 @@
 <?php
-include 'UserLayouts/header.php';
+include '../UserLayouts/header.php';
 
 // Use existing config.php for database connection
 include 'config.php';

@@ -208,12 +208,11 @@ $result = $stmt->get_result();
                     <span class="text-muted">Total <?= $result->num_rows ?> pemesanan</span>
                 <?php endif; ?>
             </div>
+            <br><br><br>
+            <br><br><br>
+
         </div>
     </div>
-    <br><br><br>
-
-    <br><br><br>
-
 </div>
 
 <!-- Help Modal -->

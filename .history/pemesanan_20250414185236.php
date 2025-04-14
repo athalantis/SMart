@@ -203,6 +203,8 @@ $result = $stmt->get_result();
         </div>
         <div class="card-footer d-flex justify-content-between align-items-center">
             <a href="dashboard.php" class="btn btn-primary">Kembali ke Dashboard</a>
+            <br><br><br>
+
             <div>
                 <?php if ($result->num_rows > 0): ?>
                     <span class="text-muted">Total <?= $result->num_rows ?> pemesanan</span>
@@ -210,10 +212,6 @@ $result = $stmt->get_result();
             </div>
         </div>
     </div>
-    <br><br><br>
-
-    <br><br><br>
-
 </div>
 
 <!-- Help Modal -->
