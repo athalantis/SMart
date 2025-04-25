@@ -82,12 +82,12 @@ transform: scale(1.2);
 color: #ff4400;
 }
 
-.card-text, .card-price, .card-location, .card-rating {
+.card-title, .card-price, .card-location, .card-rating {
   margin: 0.25rem 0 0 0; 
   color: black;
 }   
 
-.card-title{
+.card-merk{
   margin-bottom: 0rem;
   font-size: 0.8rem;
   font-weight: bold;
@@ -97,7 +97,7 @@ color: #ff4400;
   border-radius: 0 0 1rem 0;
 }
 
-.card-text {
+.card-title {
   font-size: 1rem; 
   margin-top:-0.5rem;
 }
@@ -171,7 +171,7 @@ transition: 0.3s ease;
 color: #ff4400; 
 }
 
-.card-icon span{
+#icon{
 background-color: rgba(0, 255, 60, 0.838);
 color: white;
 border-radius: 50%;
@@ -186,3 +186,87 @@ position: absolute;
 right: -5px;
 top: 6px;
 }
+
+/* style card sidebar awal */
+.sidebar{
+  width: 400px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: -400px;
+  background-color: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease-in-out;
+  z-index: 1050;
+  padding: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.sidebar.open{
+right: 0;
+}
+
+.sidebar-close{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.cart-item{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.individual-cart-item{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 5px;
+  border-radius: 5px;
+  color:  rgb(126, 122, 122);
+  border: 1px solid rgb(172, 170, 170);
+}
+
+.cart-total{
+  color: black;
+}
+
+.sidebar-footer{
+  position: absolute;
+  bottom: 10px;
+  width: 88%;
+}
+.total-barang{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 10px;
+  border-radius: 5px;
+  border: 2px solid rgb(172, 170, 170);
+}
+
+.checkout-btn{
+  width: 100%;
+  margin-top: 2rem;
+  background-color: #ff4400;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px ;
+}
+
+.remove-btn{
+ color: #fff;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff4400;
+  padding: 2px 7px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+/* style card sidebar akhir */

@@ -1,658 +1,659 @@
 <!doctype html>
- <html lang="en">
-   <head>
-     <!-- Required meta tags -->
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
- 
-     <!-- Bootstrap CSS -->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
- 
-     <!-- CSS tambahan -->
-     <link href="website.css" rel="stylesheet" >
- 
-     <!-- font -->
-     <link rel="preconnect" href="https://fonts.googleapis.com" />
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/>
- 
-     <!-- icons -->
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
- 
-     <!-- Lightbox -->
- <link rel="stylesheet" href="../dist/css/lightbox.min.css">
+  <html lang="en">
+    <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+      <!-- Bootstrap CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  
+      <!-- CSS tambahan -->
+      <link href="website.css" rel="stylesheet" >
+  
+      <!-- font -->
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/>
+  
+      <!-- icons -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+      <!-- Lightbox -->
+  <link rel="stylesheet" href="../dist/css/lightbox.min.css">
 
-   </head>
-   <body class="bg-produk">
-   <!-- Navbar awal -->
-     <nav class="navbar fixed-top navbar-expand-lg navbar-dark shadow main-color">
-         <div class="container">
-           <a class="navbar-brand" href="#">Toko Saya</a>
-           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-             <span class="navbar-toggler-icon"></span>
-           </button>
-           <div class="collapse navbar-collapse" id="navbarNav">
-             <ul class="navbar-nav ms-auto align-items-center">
-               <li class="nav-item me-4">
-                 <a class="nav-link " aria-current="page" href="home.html">Home</a>
-               </li>
-               <li class="nav-item me-4">
-                 <a class="nav-link active" href="produk.html">Produk</a>
-               </li>
-               <li class="nav-item me-4">
-                 <a class="nav-link" href="promo.html">Promo</a>
-               </li>
-               <li class="nav-item me-4">
-                <div class="card-icon position-relative">
-                  <a class="nav-link" href="keranjang.html"><i class="bi bi-cart2 fs-4"></i></a>
-                  <span>0</span>
+    </head>
+    <body class="bg-produk">
+    <!-- Navbar awal -->
+      <nav class="navbar fixed-top navbar-expand-lg navbar-dark shadow main-color">
+          <div class="container">
+            <a class="navbar-brand" href="#">Toko Saya</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item me-4">
+                  <a class="nav-link " aria-current="page" href="home.html">Home</a>
+                </li>
+                <li class="nav-item me-4">
+                  <a class="nav-link active" href="produk.html">Produk</a>
+                </li>
+                <li class="nav-item me-4">
+                  <a class="nav-link" href="promo.html">Promo</a>
+                </li>
+                <li class="nav-item me-4">
+                  <div class="cart-icon position-relative nav-link">
+                    <i class="bi bi-cart2 fs-4"></i>
+                  <span id="icon">0</span>
                 </div>
-               </li> 
-               <li class="nav-item">
-               <li class="nav-item dropdown">
-                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                   <i class="bi bi-chat-dots fs-4"></i>
-                 </a>
-                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                   <li><a class="dropdown-item" href="#">About Us</a></li>
-                   <li><a class="dropdown-item" href="#">Contact Us</a></li>
-                   <li><hr class="dropdown-divider"></li>
-                   <li><a class="dropdown-item" href="#">FAQ</a></li>
-                 </ul>
-             </ul>   
-           </div>
-         </div>
-     </nav>
-     <!-- Navbar akhir -->
- 
-     <!-- carousel awal -->
-     <div class="carousel">
-       <div class="container-fluid">
-         <div class="container">
-           <div class="row">
-             <div class="col-md-12 mt-4">
-               <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                 <div class="carousel-indicators">
-                   <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                   <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                   <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                   <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                   <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                   <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
-                 </div>
-                 <div class="carousel-inner">
-                   <div class="carousel-item active">
-                     <img src="../img/carousel/carousel4.jpg" class="d-block w-100 " alt="...">
-                     <div class="carousel-caption d-none d-md-block">
-                       <h5>First slide label</h5>
-                       <p>Some representative placeholder content for the first slide.</p>
-                     </div>
-                   </div>
-                   <div class="carousel-item">
-                     <img src="../img/carousel/carousel5.jpg" class="d-block w-100" alt="...">
-                     <div class="carousel-caption d-none d-md-block">
-                       <h5>Second slide label</h5>
-                       <p>Some representative placeholder content for the second slide.</p>
-                     </div>
-                   </div>
-                   <div class="carousel-item">
-                     <img src="../img/carousel/carousel6.jpg" class="d-block w-100" alt="...">
-                     <div class="carousel-caption d-none d-md-block">
-                       <h5>Third slide label</h5>
-                       <p>Some representative placeholder content for the third slide.</p>
-                     </div>
-                   </div>
-                   <div class="carousel-item">
-                     <img src="../img/carousel/carousel7.jpg" class="d-block w-100" alt="...">
-                     <div class="carousel-caption d-none d-md-block">
-                       <h5>Third slide label</h5>
-                       <p>Some representative placeholder content for the third slide.</p>
-                     </div>
-                   </div>
-                 </div>
-                 <div class="carousel-item">
-                   <img src="../img/carousel/carousel8.jpg" class="d-block w-100" alt="...">
-                   <div class="carousel-caption d-none d-md-block">
-                     <h5>Third slide label</h5>
-                     <p>Some representative placeholder content for the third slide.</p>
-                   </div>
-                 </div>
-                 <div class="carousel-item">
-                   <img src="../img/carousel/carousel9.jpg" class="d-block w-100" alt="...">
-                   <div class="carousel-caption d-none d-md-block">
-                     <h5>Third slide label</h5>
-                     <p>Some representative placeholder content for the third slide.</p>
-                   </div>
-                 </div>
-                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                   <span class="visually-hidden">Previous</span>
-                 </button>
-                 <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                   <span class="visually-hidden">Next</span>
-                 </button>
-               </div>
-            </div>
-           </div>
-         </div>
-       </div>
-     </div>
-     <!-- carousel akhir -->
- 
-     <!-- kategori awal -->
-      <div class="kategori">
-       <div class="container">
-         <div class="container shadow p-3 bg-body rounded border border-1 justify-content-center mt-3">
-           <p class="fs-5 m-1 ">KATEGORI</p>
-           <div class="row">
-              <div class="col-sm-4 col-md-2 mb-4">
-                <div class="card-cate">
-                  <a href="">
-                    <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
-                    <p class="text-center">Elektronik</p>
-                  </a>
-                </div>
-              </div>
-              <div class="col-sm-4 col-md-2 mb-4">
-                <div class="card-cate">
-                  <a href="">
-                    <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
-                    <p class="text-center">Elektronik</p>
-                  </a>
-                </div>
-              </div>
-              <div class="col-sm-4 col-md-2 mb-4">
-                <div class="card-cate">
-                  <a href="">
-                    <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
-                    <p class="text-center">Elektronik</p>
-                  </a>
-                </div>
-              </div>
-              <div class="col-sm-4 col-md-2 mb-4">
-                <div class="card-cate">
-                  <a href="">
-                    <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
-                    <p class="text-center">Elektronik</p>
-                  </a>
-                </div>
-              </div>
-              <div class="col-sm-4 col-md-2 mb-4">
-                <div class="card-cate">
-                  <a href="">
-                    <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
-                    <p class="text-center">Elektronik</p>
-                  </a>
-                </div>
-              </div>
-              <div class="col-sm-4 col-md-2 mb-4">
-                <div class="card-cate">
-                  <a href="">
-                    <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
-                    <p class="text-center">Elektronik</p>
-                  </a>
-                </div>
-              </div>
-              <div class="col-sm-4 col-md-2 mb-4">
-                <div class="card-cate">
-                  <a href="">
-                    <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
-                    <p class="text-center">Elektronik</p>
-                  </a>
-                </div>
-              </div>
-              <div class="col-sm-4 col-md-2 mb-4">
-                <div class="card-cate">
-                  <a href="">
-                    <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
-                    <p class="text-center">Elektronik</p>
-                  </a>
-                </div>
-              </div>
-              <div class="col-sm-4 col-md-2 mb-4">
-                <div class="card-cate">
-                  <a href="">
-                    <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
-                    <p class="text-center">Elektronik</p>
-                  </a>
-                </div>
-              </div>
-              <div class="col-sm-4 col-md-2 mb-4">
-                <div class="card-cate">
-                  <a href="">
-                    <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
-                    <p class="text-center">Elektronik</p>
-                  </a>
-                </div>
-              </div>
-              <div class="col-sm-4 col-md-2 mb-4">
-                <div class="card-cate">
-                  <a href="">
-                    <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
-                    <p class="text-center">Elektronik</p>
-                  </a>
-                </div>
-              </div>
-              <div class="col-sm-4 col-md-2 mb-4">
-                <div class="card-cate">
-                  <a href="">
-                    <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
-                    <p class="text-center">Elektronik</p>
-                  </a>
-                </div>
-              </div>
+                </li>
 
-          </div>
-         </div>
-       </div>
-      </div>
-     <!-- kategori akhir -->
-     
-     <!-- flash sale awal -->
-  <div class="flash-sale">
-    <div class="container my-4">
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <h4 class="fw-bold main-color-f">FLASH SALE</h4>
-        <a href="#" class="text-decoration-none main-color-f">Lihat Semua ></a>
-      </div>
-      <div id="flashSaleCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="row">
-              <div class="col-sm-4 col-md-2 mb-4">
-                <div class="card text-center">
-                  <a href="">
-                  <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
-                  <div class="card-body">
-                    <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
-                    <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
-                    <h6 class="text-center main-color-f">Rp 11.999</h6>
-                    <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
-                  </div>
-                </a>
-                </div>
-              </div>
-              <div class="col-sm-4 col-md-2">
-                <div class="card text-center">
-                  <a href="">
-                  <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
-                  <div class="card-body">
-                    <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
-                    <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
-                    <h6 class="text-center main-color-f">Rp 11.999</h6>
-                    <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
-                  </div>
-                </a>
-                </div>
-              </div>
-              <div class="col-sm-4 col-md-2">
-                <div class="card text-center">
-                  <a href="">
-                  <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
-                  <div class="card-body">
-                    <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
-                    <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
-                    <h6 class="text-center main-color-f">Rp 11.999</h6>
-                    <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
-                  </div>
-                </a>
-                </div>
-              </div>
-              <div class="col-sm-4 col-md-2">
-                <div class="card text-center">
-                  <a href="">
-                  <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
-                  <div class="card-body">
-                    <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
-                    <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
-                    <h6 class="text-center main-color-f">Rp 11.999</h6>
-                    <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
-                  </div>
-                </a>
-                </div>
-              </div>
-              <div class="col-sm-4 col-md-2">
-                <div class="card text-center">
-                  <a href="">
-                  <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
-                  <div class="card-body">
-                    <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
-                    <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
-                    <h6 class="text-center main-color-f">Rp 11.999</h6>
-                    <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
-                  </div>
-                </a>
-                </div>
-              </div>
-              <div class="col-sm-4 col-md-2">
-                <div class="card text-center">
-                  <a href="">
-                  <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
-                  <div class="card-body">
-                    <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
-                    <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
-                    <h6 class="text-center main-color-f">Rp 11.999</h6>
-                    <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
-                  </div>
-                </a>
-                </div>
-              </div>
-              
+                <li class="nav-item">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-chat-dots fs-4"></i>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">About Us</a></li>
+                    <li><a class="dropdown-item" href="#">Contact Us</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">FAQ</a></li>
+                  </ul>
+              </ul>   
             </div>
           </div>
-          <!-- tambah produk lainnya -->
-          <div class="carousel-item">
+      </nav>
+      <!-- Navbar akhir -->
+  
+      <!-- carousel awal -->
+      <div class="carousel">
+        <div class="container-fluid">
+          <div class="container">
             <div class="row">
-              <div class="col-sm-4 col-md-2 mb-4">
-                <div class="card text-center">
-                  <a href="">
-                  <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
-                  <div class="card-body">
-                    <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
-                    <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
-                    <h6 class="text-center main-color-f">Rp 11.999</h6>
-                    <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
+              <div class="col-md-12 mt-4">
+                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
                   </div>
-                </a>
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="../img/carousel/carousel4.jpg" class="d-block w-100 " alt="...">
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>First slide label</h5>
+                        <p>Some representative placeholder content for the first slide.</p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="../img/carousel/carousel5.jpg" class="d-block w-100" alt="...">
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>Second slide label</h5>
+                        <p>Some representative placeholder content for the second slide.</p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="../img/carousel/carousel6.jpg" class="d-block w-100" alt="...">
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>Third slide label</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="../img/carousel/carousel7.jpg" class="d-block w-100" alt="...">
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>Third slide label</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../img/carousel/carousel8.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Third slide label</h5>
+                      <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../img/carousel/carousel9.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Third slide label</h5>
+                      <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
                 </div>
               </div>
-              <div class="col-sm-4 col-md-2">
-                <div class="card text-center">
-                  <a href="">
-                  <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
-                  <div class="card-body">
-                    <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
-                    <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
-                    <h6 class="text-center main-color-f">Rp 11.999</h6>
-                    <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
-                  </div>
-                </a>
-                </div>
-              </div>
-              <div class="col-sm-4 col-md-2">
-                <div class="card text-center">
-                  <a href="">
-                  <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
-                  <div class="card-body">
-                    <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
-                    <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
-                    <h6 class="text-center main-color-f">Rp 11.999</h6>
-                    <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
-                  </div>
-                </a>
-                </div>
-              </div>
-              <div class="col-sm-4 col-md-2">
-                <div class="card text-center">
-                  <a href="">
-                  <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
-                  <div class="card-body">
-                    <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
-                    <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
-                    <h6 class="text-center main-color-f">Rp 11.999</h6>
-                    <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
-                  </div>
-                </a>
-                </div>
-              </div>
-              <div class="col-sm-4 col-md-2">
-                <div class="card text-center">
-                  <a href="">
-                  <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
-                  <div class="card-body">
-                    <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
-                    <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
-                    <h6 class="text-center main-color-f">Rp 11.999</h6>
-                    <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
-                  </div>
-                </a>
-                </div>
-              </div>
-              <div class="col-sm-4 col-md-2">
-                <div class="card text-center">
-                  <a href="">
-                  <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
-                  <div class="card-body">
-                    <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
-                    <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
-                    <h6 class="text-center main-color-f">Rp 11.999</h6>
-                    <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
-                  </div>
-                </a>
-                </div>
-              </div>
-            
             </div>
           </div>
-          <!-- Tambah produk lainnya -->
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#flashSaleCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#flashSaleCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+      </div>
+      <!-- carousel akhir -->
+  
+      <!-- kategori awal -->
+        <div class="kategori">
+        <div class="container">
+          <div class="container shadow p-3 bg-body rounded border border-1 justify-content-center mt-3">
+            <p class="fs-5 m-1 ">KATEGORI</p>
+            <div class="row">
+                <div class="col-sm-4 col-md-2 mb-4">
+                  <div class="card-cate">
+                    <a href="">
+                      <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
+                      <p class="text-center">Elektronik</p>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2 mb-4">
+                  <div class="card-cate">
+                    <a href="">
+                      <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
+                      <p class="text-center">Elektronik</p>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2 mb-4">
+                  <div class="card-cate">
+                    <a href="">
+                      <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
+                      <p class="text-center">Elektronik</p>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2 mb-4">
+                  <div class="card-cate">
+                    <a href="">
+                      <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
+                      <p class="text-center">Elektronik</p>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2 mb-4">
+                  <div class="card-cate">
+                    <a href="">
+                      <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
+                      <p class="text-center">Elektronik</p>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2 mb-4">
+                  <div class="card-cate">
+                    <a href="">
+                      <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
+                      <p class="text-center">Elektronik</p>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2 mb-4">
+                  <div class="card-cate">
+                    <a href="">
+                      <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
+                      <p class="text-center">Elektronik</p>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2 mb-4">
+                  <div class="card-cate">
+                    <a href="">
+                      <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
+                      <p class="text-center">Elektronik</p>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2 mb-4">
+                  <div class="card-cate">
+                    <a href="">
+                      <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
+                      <p class="text-center">Elektronik</p>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2 mb-4">
+                  <div class="card-cate">
+                    <a href="">
+                      <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
+                      <p class="text-center">Elektronik</p>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2 mb-4">
+                  <div class="card-cate">
+                    <a href="">
+                      <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
+                      <p class="text-center">Elektronik</p>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2 mb-4">
+                  <div class="card-cate">
+                    <a href="">
+                      <img src="../img/kategori/cate1.jpg" alt="Elektronik" class="img-size">
+                      <p class="text-center">Elektronik</p>
+                    </a>
+                  </div>
+                </div>
+
+            </div>
+          </div>
+        </div>
+        </div>
+      <!-- kategori akhir -->
+      
+      <!-- flash sale awal -->
+    <div class="flash-sale">
+      <div class="container my-4">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h4 class="fw-bold main-color-f">FLASH SALE</h4>
+          <a href="#" class="text-decoration-none main-color-f">Lihat Semua ></a>
+        </div>
+        <div id="flashSaleCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col-sm-4 col-md-2 mb-4">
+                  <div class="card text-center">
+                    <a href="">
+                    <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                      <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
+                      <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
+                      <h6 class="text-center main-color-f">Rp 11.999</h6>
+                      <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
+                    </div>
+                  </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="card text-center">
+                    <a href="">
+                    <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                      <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
+                      <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
+                      <h6 class="text-center main-color-f">Rp 11.999</h6>
+                      <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
+                    </div>
+                  </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="card text-center">
+                      <a href="">
+                    <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                      <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
+                      <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
+                      <h6 class="text-center main-color-f">Rp 11.999</h6>
+                      <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
+                    </div>
+                  </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="card text-center">
+                    <a href="">
+                    <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                      <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
+                      <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
+                      <h6 class="text-center main-color-f">Rp 11.999</h6>
+                      <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
+                    </div>
+                  </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="card text-center">
+                    <a href="">
+                    <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                      <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
+                      <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
+                      <h6 class="text-center main-color-f">Rp 11.999</h6>
+                      <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
+                    </div>
+                  </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="card text-center">
+                    <a href="">
+                    <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                      <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
+                      <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
+                      <h6 class="text-center main-color-f">Rp 11.999</h6>
+                      <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
+                    </div>
+                  </a>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            <!-- tambah produk lainnya -->
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-sm-4 col-md-2 mb-4">
+                  <div class="card text-center">
+                    <a href="">
+                    <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                      <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
+                      <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
+                      <h6 class="text-center main-color-f">Rp 11.999</h6>
+                      <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
+                    </div>
+                  </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="card text-center">
+                    <a href="">
+                    <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                      <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
+                      <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
+                      <h6 class="text-center main-color-f">Rp 11.999</h6>
+                      <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
+                    </div>
+                  </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="card text-center">
+                    <a href="">
+                    <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                      <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
+                      <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
+                      <h6 class="text-center main-color-f">Rp 11.999</h6>
+                      <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
+                    </div>
+                  </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="card text-center">
+                    <a href="">
+                    <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                      <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
+                      <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
+                      <h6 class="text-center main-color-f">Rp 11.999</h6>
+                      <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
+                    </div>
+                  </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="card text-center">
+                    <a href="">
+                    <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                      <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
+                      <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
+                      <h6 class="text-center main-color-f">Rp 11.999</h6>
+                      <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
+                    </div>
+                  </a>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                  <div class="card text-center">
+                    <a href="">
+                    <img src="../img/thumb/produk2.png" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                      <span class="badge bg-warning main-color-f position-absolute top-0 end-0 m-2">-52%</span>
+                      <span class="badge text-warning position-absolute top-0 start-0 m-2">⭐+</span>
+                      <h6 class="text-center main-color-f">Rp 11.999</h6>
+                      <button class=" btn btn-warning btn-sm rounded-pill main-color text-white">STOK TERBATAS</button>
+                    </div>
+                  </a>
+                  </div>
+                </div>
+              
+
+              </div>
+            </div>
+            <!-- Tambah produk lainnya -->
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#flashSaleCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#flashSaleCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-     <!-- flash sale akhir -->
- 
-    <!-- rekomendasi awal -->
-    <div class="rekomendasi">
-      <div class="container-fluid">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-md-12 sticky-top">
-              <h4 class="text-center mt-3 mb-3 bg-white main-color-f p-3 border border-3 border-color shadow ">REKOMENDASI</h4>
-            </div>
-              <div class="col-sm-5 col-md-2 me-3 mb-2">
-                <div class="card hovered-card mb-4">
-                  <a href="../img/produk3.jpeg" data-lightbox="gatau" data-title="gatau">
-                  <img src="../img/thumb/produk3.jpg" class="card-img-top" alt="...">
-                  <p class="card-title">SMart</p>
+      <!-- flash sale akhir -->
+  
+      <!-- rekomendasi awal -->
+      <div class="rekomendasi">
+        <div class="container-fluid">
+          <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-5 col-md-2 me-3 mb-2">
+                  <div class="card hovered-card mb-4">
+                    <a href="../img/produk3.jpeg" data-lightbox="gatau" data-title="gatau">
+                      <img src="../img/thumb/produk3.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <p class="card-merk">SMart</p>
                     <div class="card-body">
-                      <p class="card-text">Leivy Shower Cream Goat's Milk 500 mL-Sabun Mandi ...</p>
-                      <span class="badge position-absolute buttom-0 end-0 ms-1 mt-1 color-add fs-5 "><i class="bi bi-plus-circle-fill"></i></span>
-                      <p class="card-price">Rp55.100  </p>
+                      <p class="card-title">Leivy Shower Cream</p>
+                      <span class="badge position-absolute bottom-1 end-0 ms-1 mt-1 color-add fs-5">
+                        <i class="bi bi-plus-circle-fill add-cart"></i>
+                      </span>
+                      <p class="card-price">Rp 55100</p>
                       <p class="card-location">🚚Jakarta Pusat</p>
                       <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
                     </div>
-                  </a>
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-5 col-md-2 me-3 mb-2">
-                <div class="card hovered-card mb-4">
-                  <a href="../img/produk2.png" data-lightbox="gatau" data-title="gatau">
-                  <img src="../img/thumb/produk2.png" class="card-img-top" alt="...">
-                  <p class="card-title">SMart</p>
+                <div class="col-sm-5 col-md-2 me-3 mb-2">
+                  <div class="card hovered-card mb-4">
+                    <a href="../img/produk3.jpeg" data-lightbox="gatau" data-title="gatau">
+                      <img src="../img/thumb/produk3.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <p class="card-merk">SMart</p>
                     <div class="card-body">
-                      <p class="card-text">Leivy Shower Cream Goat's Milk 500 mL-Sabun Mandi ...</p>
-                      <span class="badge position-absolute buttom-0 end-0 ms-1 mt-1 color-add fs-5 "><i class="bi bi-plus-circle-fill"></i></span>
-                      <p class="card-price">Rp55.100  </p>
+                      <p class="card-title">Leivy Shower Cream</p>
+                      <span class="badge position-absolute bottom-1 end-0 ms-1 mt-1 color-add fs-5">
+                        <i class="bi bi-plus-circle-fill add-cart"></i>
+                      </span>
+                      <p class="card-price">Rp 55100</p>
                       <p class="card-location">🚚Jakarta Pusat</p>
-                       <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
+                      <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
                     </div>
-                  </a>
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-5 col-md-2 me-3 mb-2">
-                <div class="card hovered-card mb-4">
-                  <a href="../img/produk5.jpg" data-lightbox="gatau" data-title="gatau">
-                  <img src="../img/thumb/produk5.jpg" class="card-img-top" alt="...">
-                  <p class="card-title">SMart</p>
+                <div class="col-sm-5 col-md-2 me-3 mb-2">
+                  <div class="card hovered-card mb-4">
+                    <a href="../img/produk3.jpeg" data-lightbox="gatau" data-title="gatau">
+                      <img src="../img/thumb/produk3.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <p class="card-merk">SMart</p>
                     <div class="card-body">
-                      <p class="card-text">Leivy Shower Cream Goat's Milk 500 mL-Sabun Mandi ...</p>
-                      <span class="badge position-absolute buttom-0 end-0 ms-1 mt-1 color-add fs-5 "><i class="bi bi-plus-circle-fill"></i></span>
-                      <p class="card-price">Rp55.100  </p>
+                      <p class="card-title">Leivy Shower Cream</p>
+                      <span class="badge position-absolute bottom-1 end-0 ms-1 mt-1 color-add fs-5">
+                        <i class="bi bi-plus-circle-fill add-cart"></i>
+                      </span>
+                      <p class="card-price">Rp 55100</p>
                       <p class="card-location">🚚Jakarta Pusat</p>
-                       <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
+                      <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
                     </div>
-                  </a>
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-5 col-md-2 me-3 mb-2">
-                <div class="card hovered-card mb-4">
-                  <a href="../img/produk6.jpg" data-lightbox="gatau" data-title="gatau">
-                  <img src="../img/thumb/produk6.jpg" class="card-img-top" alt="...">
-                  <p class="card-title">SMart</p>
+                <div class="col-sm-5 col-md-2 me-3 mb-2">
+                  <div class="card hovered-card mb-4">
+                    <a href="../img/produk3.jpeg" data-lightbox="gatau" data-title="gatau">
+                      <img src="../img/thumb/produk3.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <p class="card-merk">SMart</p>
                     <div class="card-body">
-                      <p class="card-text">Leivy Shower Cream Goat's Milk 500 mL-Sabun Mandi ...</p>
-                      <span class="badge position-absolute buttom-0 end-0 ms-1 mt-1 color-add fs-5 "><i class="bi bi-plus-circle-fill"></i></span>
-                      <p class="card-price">Rp55.100  </p>
+                      <p class="card-title">Leivy Shower Cream</p>
+                      <span class="badge position-absolute bottom-1 end-0 ms-1 mt-1 color-add fs-5">
+                        <i class="bi bi-plus-circle-fill add-cart"></i>
+                      </span>
+                      <p class="card-price">Rp 55100</p>
                       <p class="card-location">🚚Jakarta Pusat</p>
-                       <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
+                      <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
                     </div>
-                  </a>
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-5 col-md-2 me-3 mb-2">
-                <div class="card hovered-card mb-4">
-                  <a href="../img/produk3.jpeg" data-lightbox="gatau" data-title="gatau">
-                  <img src="../img/thumb/produk3.jpg" class="card-img-top" alt="...">
-                  <p class="card-title">SMart</p>
+                <div class="col-sm-5 col-md-2 me-3 mb-2">
+                  <div class="card hovered-card mb-4">
+                    <a href="../img/produk3.jpeg" data-lightbox="gatau" data-title="gatau">
+                      <img src="../img/thumb/produk3.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <p class="card-merk">SMart</p>
                     <div class="card-body">
-                      <p class="card-text">Leivy Shower Cream Goat's Milk 500 mL-Sabun Mandi ...</p>
-                      <span class="badge position-absolute buttom-0 end-0 ms-1 mt-1 color-add fs-5 "><i class="bi bi-plus-circle-fill"></i></span>
-                      <p class="card-price">Rp55.100  </p>
+                      <p class="card-title">Leivy Shower Cream</p>
+                      <span class="badge position-absolute bottom-1 end-0 ms-1 mt-1 color-add fs-5">
+                        <i class="bi bi-plus-circle-fill add-cart"></i>
+                      </span>
+                      <p class="card-price">Rp 55100</p>
                       <p class="card-location">🚚Jakarta Pusat</p>
-                       <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
+                      <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
                     </div>
-                  </a>
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-5 col-md-2 me-3 mb-2">
-                <div class="card hovered-card mb-4">
-                  <a href="../img/produk3.jpeg" data-lightbox="gatau" data-title="gatau">
-                  <img src="../img/thumb/produk3.jpg" class="card-img-top" alt="...">
-                  <p class="card-title">SMart</p>
+                <div class="col-sm-5 col-md-2 me-3 mb-2">
+                  <div class="card hovered-card mb-4">
+                    <a href="../img/produk3.jpeg" data-lightbox="gatau" data-title="gatau">
+                      <img src="../img/thumb/produk3.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <p class="card-merk">SMart</p>
                     <div class="card-body">
-                      <p class="card-text">Leivy Shower Cream Goat's Milk 500 mL-Sabun Mandi ...</p>
-                      <span class="badge position-absolute buttom-0 end-0 ms-1 mt-1 color-add fs-5 "><i class="bi bi-plus-circle-fill"></i></span>
-                      <p class="card-price">Rp55.100  </p>
+                      <p class="card-title">Leivy Shower Cream</p>
+                      <span class="badge position-absolute bottom-1 end-0 ms-1 mt-1 color-add fs-5">
+                        <i class="bi bi-plus-circle-fill add-cart"></i>
+                      </span>
+                      <p class="card-price">Rp 55100</p>
                       <p class="card-location">🚚Jakarta Pusat</p>
-                       <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
+                      <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
                     </div>
-                  </a>
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-5 col-md-2 me-3 mb-2">
-                <div class="card hovered-card mb-4">
-                  <a href="../img/produk3.jpeg" data-lightbox="gatau" data-title="gatau">
-                  <img src="../img/thumb/produk3.jpg" class="card-img-top" alt="...">
-                  <p class="card-title">SMart</p>
+                <div class="col-sm-5 col-md-2 me-3 mb-2">
+                  <div class="card hovered-card mb-4">
+                    <a href="../img/produk3.jpeg" data-lightbox="gatau" data-title="gatau">
+                      <img src="../img/thumb/produk3.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <p class="card-merk">SMart</p>
                     <div class="card-body">
-                      <p class="card-text">Leivy Shower Cream Goat's Milk 500 mL-Sabun Mandi ...</p>
-                      <span class="badge position-absolute buttom-0 end-0 ms-1 mt-1 color-add fs-5 "><i class="bi bi-plus-circle-fill"></i></span>
-                      <p class="card-price">Rp55.100  </p>
+                      <p class="card-title">Leivy Shower Cream</p>
+                      <span class="badge position-absolute bottom-1 end-0 ms-1 mt-1 color-add fs-5">
+                        <i class="bi bi-plus-circle-fill add-cart"></i>
+                      </span>
+                      <p class="card-price">Rp 55100</p>
                       <p class="card-location">🚚Jakarta Pusat</p>
-                       <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
+                      <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
                     </div>
-                  </a>
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-5 col-md-2 me-3 mb-2">
-                <div class="card hovered-card mb-4">
-                  <a href="../img/produk3.jpeg" data-lightbox="gatau" data-title="gatau">
-                  <img src="../img/thumb/produk3.jpg" class="card-img-top" alt="...">
-                  <p class="card-title">SMart</p>
+                
+                <div class="col-sm-5 col-md-2 me-3 mb-2">
+                  <div class="card hovered-card mb-4">
+                    <a href="../img/produk3.jpeg" data-lightbox="gatau" data-title="gatau">
+                      <img src="../img/thumb/produk3.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <p class="card-merk">SMart</p>
                     <div class="card-body">
-                      <p class="card-text">Leivy Shower Cream Goat's Milk 500 mL-Sabun Mandi ...</p>
-                      <span class="badge position-absolute buttom-0 end-0 ms-1 mt-1 color-add fs-5 "><i class="bi bi-plus-circle-fill"></i></span>
-                      <p class="card-price">Rp55.100  </p>
+                      <p class="card-title">Leivy Shower Cream</p>
+                      <span class="badge position-absolute bottom-1 end-0 ms-1 mt-1 color-add fs-5">
+                        <i class="bi bi-plus-circle-fill add-cart"></i>
+                      </span>
+                      <p class="card-price">Rp 55100</p>
                       <p class="card-location">🚚Jakarta Pusat</p>
-                       <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
+                      <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
                     </div>
-                  </a>
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-5 col-md-2 me-3 mb-2">
-                <div class="card hovered-card mb-4">
-                  <a href="../img/produk3.jpeg" data-lightbox="gatau" data-title="gatau">
-                  <img src="../img/thumb/produk3.jpg" class="card-img-top" alt="...">
-                  <p class="card-title">SMart</p>
+                <div class="col-sm-5 col-md-2 me-3 mb-2">
+                  <div class="card hovered-card mb-4">
+                    <a href="../img/produk3.jpeg" data-lightbox="gatau" data-title="gatau">
+                      <img src="../img/thumb/produk3.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <p class="card-merk">SMart</p>
                     <div class="card-body">
-                      <p class="card-text">Leivy Shower Cream Goat's Milk 500 mL-Sabun Mandi ...</p>
-                      <span class="badge position-absolute buttom-0 end-0 ms-1 mt-1 color-add fs-5 "><i class="bi bi-plus-circle-fill"></i></span>
-                      <p class="card-price">Rp55.100  </p>
+                      <p class="card-title">Leivy Shower Cream</p>
+                      <span class="badge position-absolute bottom-1 end-0 ms-1 mt-1 color-add fs-5">
+                        <i class="bi bi-plus-circle-fill add-cart"></i>
+                      </span>
+                      <p class="card-price">Rp 55100</p>
                       <p class="card-location">🚚Jakarta Pusat</p>
-                       <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
+                      <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
                     </div>
-                  </a>
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-5 col-md-2 me-3 mb-2">
-                <div class="card hovered-card mb-4">
-                  <a href="../img/produk3.jpeg" data-lightbox="gatau" data-title="gatau">
-                  <img src="../img/thumb/produk3.jpg" class="card-img-top" alt="...">
-                  <p class="card-title">SMart</p>
+                <div class="col-sm-5 col-md-2 me-3 mb-2">
+                  <div class="card hovered-card mb-4">
+                    <a href="../img/produk3.jpeg" data-lightbox="gatau" data-title="gatau">
+                      <img src="../img/thumb/produk3.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <p class="card-merk">SMart</p>
                     <div class="card-body">
-                      <p class="card-text">Leivy Shower Cream Goat's Milk 500 mL-Sabun Mandi ...</p>
-                      <span class="badge position-absolute buttom-0 end-0 ms-1 mt-1 color-add fs-5 "><i class="bi bi-plus-circle-fill"></i></span>
-                      <p class="card-price">Rp55.100  </p>
+                      <p class="card-title">Leivy Shower Cream</p>
+                      <span class="badge position-absolute bottom-1 end-0 ms-1 mt-1 color-add fs-5">
+                        <i class="bi bi-plus-circle-fill add-cart"></i>
+                      </span>
+                      <p class="card-price">Rp 55100</p>
                       <p class="card-location">🚚Jakarta Pusat</p>
-                       <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
+                      <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
                     </div>
-                  </a>
+                  </div>
                 </div>
-              </div>
-  
-          </div> 
-        </div>
-      </div>
-    </div>
-    <!-- rekomendasi akhir -->
-
-    <!-- card sidebar awal -->
-     <div class="sidebar">
-      <div class="sidebar-close">
-        <i class="bi bi-x-lg"></i>
-        <div class="cart-menu">
-          <h3>My Cart</h3>
-          <div class="cart-item">test 1</div>
-        </div>
-        <div class="sidebar-footer">
-          <div class="total-barang">
-            <h5>total</h5>
-            <div class="cart-total">Rp.0</div>
+            </div> 
           </div>
-          <button class="checkout-btn">Checkout</button>
         </div>
       </div>
-     </div>
-    <!-- card sidebar akhir -->
+      <!-- rekomendasi akhir -->
 
-     <!-- <div class="carousel">
-         <div class="container">
-             <div class="row">
-                 <div class="col-9">
-                     <h2 class="mt-2">Promo Spesial</h2>
-                 </div>
-                 <div class="col-3 d-flex justify-content-end align-items-center">
-                     <a class="btn btn-outline-warning" href="#" role="button">Lihat Lainnya</a>
-                 </div>
-             </div>
-         </div>
-         
-         <div class="container">
-             <div class="row">
-                 <div class="col-9">
-                     <h2 class="mt-2">Promo Spesial</h2>
-                 </div>
-                 <div class="col-3 d-flex justify-content-end align-items-center">
-                     <a class="btn btn-outline-warning" href="#" role="button">Lihat Lainnya</a>
-                 </div>
-             </div>
-         </div>
-     </div> -->
-     <!-- carousel akihir -->
- 
-     <!-- Option 1: Bootstrap Bundle with Popper -->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      <!-- card sidebar awal -->
+      <div class="sidebar">
+        <div class="sidebar-close">
+            <i class="bi bi-x-lg"></i>
+        </div>
+          <div class="cart-menu">
+            <h3>My Cart</h3>
+            <!-- harga barang -->
+            <div class="cart-items"></div>
+            <!-- akhir harga barang -->
+          </div>
+          <div class="sidebar-footer">
+            <div class="total-barang">
+              <h5>total</h5>
+              <div class="cart-total ">Rp.0</div>
+            </div>
+            <button class="checkout-btn">Checkout</button>
+          </div>
+      
+      </div>
+      <!-- card sidebar akhir -->
 
-       <!-- JS tambahan-->
-    <script src="../dist/js/lightbox-plus-jquery.min.js"></script>
-   </body>
-   
+      <!-- Option 1: Bootstrap Bundle with Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+      <!-- JS Tambahan -->
+      <script src="website.js"></script>
+
+        <!-- JS lightbox-->
+      <script src="../dist/js/lightbox-plus-jquery.min.js"></script>
+    </body>
+    
+  </html>
