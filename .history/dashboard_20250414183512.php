@@ -1,5 +1,6 @@
 <?php
-include 'UserLayouts/header.php';
+include '../.InlcudesUser/header.php';
+include '.includes/toast_notification.php';
 
 // Use existing config.php for database connection
 include 'config.php';

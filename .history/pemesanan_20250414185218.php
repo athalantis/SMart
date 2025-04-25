@@ -210,10 +210,6 @@ $result = $stmt->get_result();
             </div>
         </div>
     </div>
-    <br><br><br>
-
-    <br><br><br>
-
 </div>
 
 <!-- Help Modal -->
@@ -259,6 +255,7 @@ $result = $stmt->get_result();
     <button type="button" class="btn btn-primary rounded-circle" data-bs-toggle="modal" data-bs-target="#helpModal">
         <i class="bi bi-question-lg"></i>
     </button>
+    <br><br><br>
 </div>
 
 <?php
