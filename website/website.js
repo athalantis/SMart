@@ -1,3 +1,4 @@
+// js bagian cart awal
 document.addEventListener("DOMContentLoaded", () => {
     const addToCartIcons = document.querySelectorAll(".add-cart");
     const cartItemCount = document.querySelector(".cart-icon span");
@@ -11,12 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let cartItems = [];
     let totalAmount = 0;
 
-    // Debugging: memastikan elemen ditemukan
+    // memastikan elemen ditemukan
     console.log("Add to Cart Icons:", addToCartIcons);
     console.log("Cart Icon:", cartIcon);
     console.log("Sidebar Close Button:", closeButton);
 
-    // Event listener untuk ikon Add to Cart
+    // Event listener untuk setiap menekan icon "add to cart"
     if (addToCartIcons.length > 0) {
         addToCartIcons.forEach((icon) => {
             icon.addEventListener("click", () => {
@@ -124,3 +125,51 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Checkout Button not found");
     }
 });
+//* js bagian cart akhir */
+
+//js bagian blockquote awal
+document.addEventListener("DOMContentLoaded", () => {
+  const feedbackForm = document.getElementById("feedbackForm");
+  const reviewContainer = document.getElementById("reviewContainer");
+
+  feedbackForm.addEventListener("submit", (event) => {
+    event.preventDefault(); // Mencegah reload halaman
+
+    // Ambil nilai dari inputan
+    const nama = document.getElementById("nama").value.trim();
+    const pesanSingkat = document.getElementById("pesan-singkat").value.trim();
+    const pesan = document.getElementById("pesan").value.trim();
+
+    // Validasi input
+    if (!nama || !pesanSingkat || !pesan) {
+      alert("Nama, pesan singkat, dan kritik/pesan tidak boleh kosong!");
+      return;
+    }
+
+    // Buat elemen baru untuk review
+    const reviewCard = document.createElement("div");
+    reviewCard.classList.add("col-md-4", "mb-3");
+
+    // menambahkan konten atau pesan blockquote 
+    reviewCard.innerHTML = `
+      <div class="card card-blockquote hovered-card-service p-3">
+        <figure>
+          <blockquote class="blockquote">
+            <p>${pesanSingkat}</p>
+          </blockquote>
+          <figcaption class="blockquote-footer">
+            ${nama}
+          </figcaption>
+          <p>${pesan}</p>
+        </figure>
+      </div>
+    `;
+
+    // Tambahkan elemen baru ke container review
+    reviewContainer.appendChild(reviewCard);
+
+    // Reset form
+    feedbackForm.reset();
+  });
+});
+//js bagian blockquote akhir
