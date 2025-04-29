@@ -1,0 +1,421 @@
+<?php
+session_start(); // Memulai session
+
+// Inisialisasi array untuk menyimpan pesan ulasan jika belum ada
+if (!isset($_SESSION['reviews'])) {
+    $_SESSION['reviews'] = [];
+}
+
+// Cek apakah form telah dikirim
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nama = ($_POST['nama']);
+    $pesanSingkat = ($_POST['pesan-singkat']);
+    $pesan = ($_POST['pesan']);
+
+    // Tambahkan ulasan baru ke session
+    $_SESSION['reviews'][] = [
+        'nama' => $nama,
+        'pesanSingkat' => $pesanSingkat,
+        'pesan' => $pesan
+    ];
+} else {
+  echo "<script>alert('Nama dan Pesan wajib diisi!');</script>";
+}
+?>
+
+<!doctype html>
+ <html lang="en">
+   <head>
+     <!-- Required meta tags -->
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+     <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ 
+     <!-- CSS tambahan -->
+     <link href="website.css" rel="stylesheet" >
+ 
+     <!-- font -->
+     <link rel="preconnect" href="https://fonts.googleapis.com" />
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+       rel="stylesheet"/>
+ 
+     <!-- icons -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+ 
+     <!-- Lightbox -->
+ <link rel="stylesheet" href="../dist/css/lightbox.min.css">
+ 
+     <title>coba</title>
+   </head>
+   <body>
+     <!-- Navbar awal -->
+     <nav class="navbar fixed-top navbar-expand-lg navbar-dark shadow main-color">
+         <div class="container">
+           <a class="navbar-brand" href="#">Toko Saya</a>
+           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarNav">
+             <ul class="navbar-nav ms-auto align-items-center">
+               <li class="nav-item me-4">
+                 <a class="nav-link active" aria-current="page" href="#">Home</a>
+               </li>
+               <li class="nav-item me-4">
+                 <a class="nav-link" href="produk.html">Produk</a>
+               </li>
+               <li class="nav-item me-4">
+                 <a class="nav-link" href="promo.html">Promo</a>
+               </li>
+               <li class="nav-item me-4">
+                 <a class="nav-link" href="keranjang.html"><i class="bi bi-cart2 fs-4"></i></a>
+               </li> 
+               <li class="nav-item ">
+               <li class="nav-item ">
+                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                   <i class="bi bi-chat-dots fs-4"></i>
+                 </a>
+                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                   <li><a class="dropdown-item" href="#">About Us</a></li>
+                   <li><a class="dropdown-item" href="#">Contact Us</a></li>
+                   <li><hr class="dropdown-divider"></li>
+                   <li><a class="dropdown-item" href="#">FAQ</a></li>
+                 </ul>
+             </ul>   
+           </div>
+         </div>
+       </nav>
+     <!-- Navbar akhir -->
+ 
+     <!-- banner awal -->
+      <div class="container-fluid banner d-flex align-items-center">
+         <div class="container">
+           <p class="text-white text-center mb-1 fs-2">Selamat Datang Di Website Kami<i class="bi bi-emoji-smile"></i></p>
+           <p class="text-white text-center mb-3 fs-3">Silahkan Cari disini!</p>
+           <div class="col-md-8 offset-md-2 ">
+             <div class="input-group input-group-md mb-3">
+             <input type="text" class="form-control" placeholder="search" aria-label="search" aria-describedby="button-addon2">
+              <button class="btn btn-md main-color" type="button" id="button-addon2"><i class="bi bi-search text-white"></i></button>
+             </div>
+           </div>
+         </div>
+       </div>
+       <!-- decor awal -->
+       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ff4400" fill-opacity="1" d="M0,96L40,112C80,128,160,160,240,154.7C320,149,400,107,480,117.3C560,128,640,192,720,202.7C800,213,880,171,960,133.3C1040,96,1120,64,1200,64C1280,64,1360,96,1400,112L1440,128L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg>
+       <!-- decor akhir -->
+     <!-- banner akihir -->
+ 
+     <!-- promo awal -->
+   <div class="promo">
+     <div class="container">
+       <div class="row text-center">
+         <div class="col mb-2 ">
+           <h2>Promo Minggu Ini</h2>
+         </div>
+       </div>
+       <div class="row justify-content-center">
+         <div class="col-sm-5 col-md-3 m-3">
+           <div class="card hovered-card">
+             <a href="">
+             <img src="../img/thumb/img1.png" class="card-img-top" alt="...">
+             <p class="card-merk">SMart</p>
+               <div class="card-body">
+                 <p class="card-title">Leivy Shower Cream Goat's Milk 500 mL-Sabun Mandi ...</p>
+                 <p class="card-price">Rp55.100 <s>Rp85.100</s></p>
+                 <p class="card-location">🚚Jakarta Pusat</p>
+                 <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
+               </div>
+             </a>
+           </div>
+         </div>
+         <div class="col-sm-5 col-md-3 m-3">
+           <div class="card hovered-card">
+             <a href="">
+             <img src="../img/thumb/produk2.png" class="card-img-top" alt="...">
+             <p class="card-merk">SMart</p>
+               <div class="card-body">
+                 <p class="card-title">Leivy Shower Cream Goat's Milk 500 mL-Sabun Mandi ...</p>
+                 <p class="card-price">Rp55.100 <s>Rp85.100</s></p>
+                 <p class="card-location">🚚Jakarta Pusat</p>
+                 <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
+               </div>
+             </a>
+           </div>
+         </div>
+         <div class="col-sm-5 col-md-3 m-3">
+           <div class="card  hovered-card">
+             <a href="">
+             <img src="../img/thumb/produk3.jpg" class="card-img-top" alt="...">
+             <p class="card-merk">SMart</p>
+               <div class="card-body">
+                 <p class="card-title">Leivy Shower Cream Goat's Milk 500 mL-Sabun Mandi ...</p>
+                 <p class="card-price">Rp55.100 <s>Rp85.100</s></p>
+                 <p class="card-location">🚚Jakarta Pusat</p>
+                 <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
+               </div>
+             </a>
+           </div>
+         </div> 
+       </div>
+       <div class="row text-center">
+         <div class="col mt-4">
+           <a class="btn btn-outline-warning" href="#" role="button">Lihat Semua Promo</a>
+         </div>
+       </div>
+     </div>
+   </div>
+   <!-- decor awal -->
+    <div class="bg">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FF4400" fill-opacity="1" d="M0,32L40,80C80,128,160,224,240,234.7C320,245,400,171,480,117.3C560,64,640,32,720,48C800,64,880,128,960,128C1040,128,1120,64,1200,53.3C1280,43,1360,85,1400,106.7L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg>
+    </div>
+   <!-- decor akhir -->
+     <!-- promo akhir -->
+ 
+     <!-- service awal -->
+ <div class="service">
+   <div class="container-fluid main-color">
+     <div class="container">
+       <h2 class="text-center text-white mb-5">Kami Melayani</h2>
+       <div class="row justify-content-center">
+         <div class="col-sm-6 col-md-3 mb-3 hovered-card-service">
+           <div class="d-flex justify-content-center">
+             <div class="icon-service d-flex align-items-center justify-content-center">
+               <i class="bi bi-truck display-5 text-white"></i>
+             </div>
+           </div>
+             <div class="mt-2 text-white text-center">
+               <h6>Delivery</h6>
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis unde vel dolor! Placeat non quos laboriosam itaque aliquam</p>
+             </div>
+           </div>
+         <div class="col-sm-6 col-md-3 mb-3 hovered-card-service">
+           <div class="d-flex justify-content-center">
+             <div class="icon-service d-flex align-items-center justify-content-center">
+               <i class="bi bi-box-seam display-5 text-white"></i>
+             </div>
+           </div>
+             <div class=" mt-2 text-white text-center">
+               <h6>return and refund</h6>
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis unde vel dolor! Placeat non quos laboriosam itaque aliquam</p>
+             </div>
+           </div>
+         <div class="col-sm-6 col-md-3 mb-3  hovered-card-service">
+           <div class="d-flex justify-content-center">
+             <div class="icon-service d-flex align-items-center justify-content-center">
+               <i class="bi bi-truck display-5 text-white"></i>
+             </div>
+           </div>
+             <div class=" mt-2 text-white text-center">
+               <h6>Delivery</h6>
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis unde vel dolor! Placeat non quos laboriosam itaque aliquam</p>
+             </div>
+           </div>
+       </div>
+     </div>
+   </div>
+ </div>
+    <!-- decor awal -->
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FF4400" fill-opacity="1" d="M0,224L40,192C80,160,160,96,240,74.7C320,53,400,75,480,106.7C560,139,640,181,720,176C800,171,880,117,960,101.3C1040,85,1120,107,1200,138.7C1280,171,1360,213,1400,234.7L1440,256L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg>
+    <!-- decor akhir -->
+     <!-- service akhir -->
+ 
+     <!-- produk awal -->
+ <div class="produk-fav">
+   <div class="container-fluid">
+     <div class="container">
+       <h2 class="text-center mb-5">Produk Paling Banyak Dibeli</h2>
+         <div class="row justify-content-center">
+           <div class="col-sm-5 col-md-3 me-3 mb-2">
+             <div class="card hovered-card mb-4">
+               <a href="../img/produk3.jpeg" data-lightbox="gatau" data-title="gatau">
+               <img src="../img/thumb/produk3.jpg" class="card-img-top" alt="...">
+               <p class="card-merk">SMart</p>
+                 <div class="card-body">
+                   <p class="card-title">Leivy Shower Cream Goat's Milk 500 mL-Sabun Mandi ...</p>
+                   <p class="card-price">Rp55.100  </p>
+                   <p class="card-location">🚚Jakarta Pusat</p>
+                    <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
+                 </div>
+               </a>
+             </div>
+           </div>
+           <div class="col-sm-5 col-md-3 me-3 mb-2">
+             <div class="card hovered-card mb-4">
+               <a href="../img/produk2.png" data-lightbox="gatau" data-title="gatau">
+               <img src="../img/thumb/produk2.png" class="card-img-top" alt="...">
+               <p class="card-merk">SMart</p>
+                 <div class="card-body">
+                   <p class="card-title">Leivy Shower Cream Goat's Milk 500 mL-Sabun Mandi ...</p>
+                   <p class="card-price">Rp55.100  </p>
+                   <p class="card-location">🚚Jakarta Pusat</p>
+                    <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
+                 </div>
+               </a>
+             </div>
+           </div>
+           <div class="col-sm-5 col-md-3 me-3 mb-2">
+             <div class="card hovered-card mb-4">
+               <a href="../img/produk5.jpg" data-lightbox="gatau" data-title="gatau">
+               <img src="../img/thumb/produk5.jpg" class="card-img-top" alt="...">
+               <p class="card-merk">SMart</p>
+                 <div class="card-body">
+                   <p class="card-title">Leivy Shower Cream Goat's Milk 500 mL-Sabun Mandi ...</p>
+                   <p class="card-price">Rp55.100  </p>
+                   <p class="card-location">🚚Jakarta Pusat</p>
+                    <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
+                 </div>
+               </a>
+             </div>
+           </div>
+           <div class="col-sm-5 col-md-3 me-3 mb-2">
+             <div class="card hovered-card mb-4">
+               <a href="../img/produk6.jpg" data-lightbox="gatau" data-title="gatau">
+               <img src="../img/thumb/produk6.jpg" class="card-img-top" alt="...">
+               <p class="card-merk">SMart</p>
+                 <div class="card-body">
+                   <p class="card-title">Leivy Shower Cream Goat's Milk 500 mL-Sabun Mandi ...</p>
+                   <p class="card-price">Rp55.100  </p>
+                   <p class="card-location">🚚Jakarta Pusat</p>
+                    <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
+                 </div>
+               </a>
+             </div>
+           </div>
+           <div class="col-sm-5 col-md-3 me-3 mb-2">
+             <div class="card hovered-card mb-4">
+               <a href="../img/produk3.jpeg" data-lightbox="gatau" data-title="gatau">
+               <img src="../img/thumb/produk3.jpg" class="card-img-top" alt="...">
+               <p class="card-merk">SMart</p>
+                 <div class="card-body">
+                   <p class="card-title">Leivy Shower Cream Goat's Milk 500 mL-Sabun Mandi ...</p>
+                   <p class="card-price">Rp55.100  </p>
+                   <p class="card-location">🚚Jakarta Pusat</p>
+                    <p class="card-rating">⭐ 4.9 | 250+ terjual</p>
+                 </div>
+               </a>
+             </div>
+           </div>
+         </div>
+         <div class="row text-center">
+           <div class="col mt-3">
+             <a class="btn btn-outline-warning" href="produk.html" role="button">Lihat Lainnya</a>
+           </div>
+         </div>
+       </div> 
+     </div>
+   </div>
+ </div>
+    <!-- decor akhir -->
+    <div class="bg">
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ff4400" fill-opacity="1" d="M0,128L40,106.7C80,85,160,43,240,37.3C320,32,400,64,480,96C560,128,640,160,720,170.7C800,181,880,171,960,154.7C1040,139,1120,117,1200,117.3C1280,117,1360,139,1400,149.3L1440,160L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg>
+   </div>
+      <!-- decor akhir -->
+     <!-- produk akhir -->
+ 
+ <!-- ulasan awal -->
+<div class="ulasan">
+  <div class="container-fluid py-5 main-color">
+    <div class="container">
+      <h2 class="text-center text-white mb-5">Review Pengguna</h2>
+      <div class="row" data-masonry='{"percentPosition": true }'>
+        <?php if (!empty($_SESSION['reviews'])): ?>
+          <?php foreach ($_SESSION['reviews'] as $review): ?>
+            <div class="col-md-4 mb-3">
+              <div class="card hovered-card-service p-3">
+                <figure>
+                  <blockquote class="blockquote">
+                    <p><?php echo $review['pesanSingkat']; ?></p>
+                  </blockquote>
+                  <figcaption class="blockquote-footer">
+                    <?php echo $review['nama']; ?>
+                  </figcaption>
+                  <p><?php echo $review['pesan']; ?></p>
+                </figure>
+              </div>
+            </div>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <div class="col-md-12 text-center text-white">
+            <p>Belum ada review yang dikirimkan.</p>
+          </div>
+        <?php endif; ?>
+      </div>
+    </div> 
+  </div>
+</div>
+   <!-- decor awal --> 
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ff4400" fill-opacity="1" d="M0,160L48,160C96,160,192,160,288,149.3C384,139,480,117,576,144C672,171,768,245,864,256C960,267,1056,213,1152,197.3C1248,181,1344,203,1392,213.3L1440,224L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+   <!-- decor akhir --> 
+ <!-- ulasan akhir --> 
+ 
+  <!-- form awal -->
+  <div class="form">
+     <div class="container-fluid py-5">
+       <div class="container">
+         <h2 class="text-center">Tulis Ulasan Anda</h2>
+         <hr class="col-sm-8 offset-sm-2 col-md-6 offset-md-3 mt-0"style="border: 1px solid;">
+           <form method="POST" id="feedbackForm" class="col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+  <div class="mb-3">
+    <label for="nama" class="form-label">Nama Pengirim</label>
+    <input type="text" class="form-control" id="nama" placeholder="nama" name="nama" required>
+  </div>
+  <div class="mb-3">
+    <label for="pesan-singkat" class="pesan-singkat">Pesan Singkat</label>
+    <input type="text" class="form-control" id="pesan-singkat" name="pesan-singkat" placeholder="Pesan Singkat">
+  </div>
+  <div class="mb-3">
+    <label for="pesan" class="form-label">Kritik dan Pesan</label>
+    <textarea class="form-control" id="pesan" rows="3" name="pesan" required></textarea>
+  </div>
+  <input class="btn btn-outline-warning w-100 mt-2" type="submit" value="kirim">
+</form>
+       </div>
+     </div>
+   </div>
+  <!-- form akhir -->
+ 
+   <!-- footer awal -->
+  <div class="container-fluid py-3 footer-color">
+     <div class="container">
+       <h2 class="text-center text-white mb-2">Sosial Media</h2>
+         <div class="row justify-content-center text-white ">
+           <div class="col-sm-1 col-md-1 fs-3 d-flex justify-content-center hovered-social">
+             <i class="bi bi-facebook"></i>
+           </div>
+           <div class="col-sm-1 col-md-1 fs-3 d-flex justify-content-center hovered-social">
+             <i class="bi bi-instagram"></i>
+           </div>
+           <div class="col-sm-1 col-md-1 fs-3 d-flex justify-content-center hovered-social">
+             <i class="bi bi-youtube"></i>
+           </div>
+           <div class="col-sm-1 col-md-1 fs-3 d-flex justify-content-center hovered-social">
+             <i class="bi bi-twitter-x"></i>
+           </div>
+       </div>
+     </div>
+   </div>
+ 
+   <div class="container-fluid py-3 footer-color2">
+     <div class="container">
+       <h6 class="text-center mt-2" style="color: #7a7a7a;">Website Made With Group 16</h6>
+     </div>
+   </div>
+   <!-- footer akhir -->
+ 
+     <!-- Optional JavaScript; choose one of the two! -->
+ 
+     <!-- Option 1: Bootstrap Bundle with Popper -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ 
+       <!-- JS Tambahan -->
+       <script src="website.js"></script>
+
+       <!-- JS lightbox-->
+     <script src="../dist/js/lightbox-plus-jquery.min.js"></script>
+ 
+   <!-- Masonry -->
+   <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+   </body>
+ </html>
