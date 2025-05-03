@@ -92,40 +92,51 @@ if ($purchasedFilter) {
 $result = mysqli_query($conn, $query);
 ?>
 
-<div class="container mt-4">
-    <div class="row g-4">
+<style>
+    .hovered-card:hover {
+    transform: scale(1.02);
+    transition: 0.3s ease;
+}
+
+</style>
+
+<div class="container mt-5">
+    <div class="row">
         <?php if (mysqli_num_rows($result) > 0): ?>
             <?php while ($row = mysqli_fetch_assoc($result)): ?>
                 <?php $stok = (int) $row['stok']; ?>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-img-container" style="height: 200px; overflow: hidden;">
-                            <img src="./product_picture/<?= htmlspecialchars($row['gambar_produk']) ?>" 
-                                 class="card-img-top img-fluid h-100 w-100 object-fit-cover" 
-                                 alt="<?= htmlspecialchars($row['nama_produk']) ?>">
-                        </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <img src="./product_picture/<?= htmlspecialchars($row['gambar_produk']) ?>"
+                             class="card-img-top img-fluid rounded-top"
+                             alt="<?= htmlspecialchars($row['nama_produk']) ?>"
+                             style="height: 200px; object-fit: cover;" />
+                             
                         <div class="card-body d-flex flex-column">
-                            <div class="mb-2">
-                                <small class="text-muted">Toko Saya</small>
-                                <h5 class="card-title mb-1"><?= htmlspecialchars($row['nama_produk']) ?></h5>
-                                <p class="card-price text-success fw-bold mb-1">Rp <?= number_format($row['harga'], 0, ',', '.') ?></p>
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="badge bg-<?= $stok > 0 ? 'success' : 'danger' ?>">
-                                        <?= $stok > 0 ? 'In Stock' : 'Out of Stock' ?>
-                                    </span>
-                                    <small class="text-muted">Stock: <?= $stok ?></small>
-                                </div>
-                                <div class="d-flex align-items-center mb-3">
-                                    <span class="text-warning">★ ★ ★ ★ ★</span>
-                                    <small class="text-muted ms-1">4.9</small>
-                                </div>
+                            <small class="text-muted d-block mb-1 text-center">Toko Saya</small>
+                            <h6 class="card-title text-center fw-semibold mb-2"><?= htmlspecialchars($row['nama_produk']) ?></h6>
+                            
+                            <p class="text-success fw-bold text-center mb-2">
+                                Rp <?= number_format($row['harga'], 0, ',', '.') ?>
+                            </p>
+                            
+                            <p class="text-center text-secondary mb-2">
+                                🚚 Tersedia | ⭐ 4.9
+                            </p>
+                            
+                            <div class="d-flex justify-content-between align-items-center mb-3 px-2">
+                                <span class="badge bg-<?= $stok > 0 ? 'success' : 'danger' ?>">
+                                    <?= $stok > 0 ? 'Tersedia' : 'Habis' ?>
+                                </span>
+                                <small class="text-muted">Stok: <?= $stok ?></small>
                             </div>
+                            
                             <button type="button"
-                                    class="btn btn-primary mt-auto <?= $stok <= 0 ? 'disabled' : '' ?>"
+                                    class="btn btn-primary rounded-pill w-100 mt-auto <?= $stok <= 0 ? 'disabled' : '' ?>"
                                     data-bs-toggle="modal"
                                     data-bs-target="#orderModal"
                                     onclick="<?= $stok > 0 ? "setOrderModal({$row['produk_id']}, {$stok}, '" . addslashes(htmlspecialchars($row['nama_produk'])) . "')" : '' ?>">
-                                Buy Now
+                                Beli Sekarang
                             </button>
                         </div>
                     </div>
@@ -133,11 +144,13 @@ $result = mysqli_query($conn, $query);
             <?php endwhile; ?>
         <?php else: ?>
             <div class="col-12">
-                <div class="alert alert-info text-center">No products found.</div>
+                <div class="alert alert-info text-center">Tidak ada produk ditemukan.</div>
             </div>
         <?php endif; ?>
     </div>
 </div>
+
+
 
 <!-- Order Modal -->
 <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">

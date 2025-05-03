@@ -140,6 +140,43 @@ $result = mysqli_query($conn, $query);
 </div>
 
 <!-- Order Modal -->
+<div class="container mt-4">
+    <div class="row">
+        <?php if (mysqli_num_rows($result) > 0): ?>
+            <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                <?php $stok = (int) $row['stok']; ?>
+                <div class="col-sm-5 col-md-3 me-3 mb-4">
+                    <div class="card h-100 hovered-card">
+                        <a href="#">
+                            <img class="card-img-top" 
+                                src="./product_picture/<?= htmlspecialchars($row['gambar_produk']) ?>" 
+                                alt="<?= htmlspecialchars($row['nama_produk']) ?>" 
+                                style="height: 200px; object-fit: cover; border-top-left-radius: 0.5rem; border-top-right-radius: 0.5rem;" />
+                            <p class="card-title text-center mt-2">Toko Saya</p>
+                            <div class="card-body">
+                                <p class="card-text fw-bold"><?= htmlspecialchars($row['nama_produk']) ?></p>
+                                <p class="card-price text-success">Rp. <?= number_format($row['harga'], 0, ',', '.') ?></p>
+                                <p class="card-location">🚚 <?= $stok > 0 ? 'Tersedia' : 'Habis' ?></p>
+                                <p class="card-rating">⭐ 4.9 | Stok: <?= $stok ?> tersedia</p>
+                                <button type="button" 
+                                        class="btn rounded-pill btn-primary w-100 <?= $stok <= 0 ? 'disabled' : '' ?>"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#orderModal"
+                                        onclick="<?= $stok > 0 ? "setOrderModal({$row['produk_id']}, {$stok}, '" . addslashes(htmlspecialchars($row['nama_produk'])) . "')" : '' ?>">
+                                    Beli Sekarang
+                                </button>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <div class="col-12 text-center"><div class="alert alert-info">Belum ada produk yang ditemukan.</div></div>
+        <?php endif; ?>
+    </div>
+</div>
+
+<!-- Order Modal -->
 <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -218,37 +255,26 @@ $result = mysqli_query($conn, $query);
 </script>
 
 <style>
-    .card {
-        border-radius: 10px;
+    .hovered-card {
         transition: transform 0.2s, box-shadow 0.2s;
         border: none;
+        border-radius: 0.5rem;
     }
     
-    .card:hover {
+    .hovered-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
     
-    .card-img-container {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        background-color: #f8f9fa;
-    }
-    
-    .object-fit-cover {
-        object-fit: cover;
-        object-position: center;
-    }
-    
-    .modal-content {
-        border-radius: 10px;
+    .card-img-top {
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
     }
     
     .btn-primary {
         background-color: #0d6efd;
         border: none;
         padding: 8px 16px;
-        border-radius: 8px;
         font-weight: 500;
     }
     
@@ -257,7 +283,10 @@ $result = mysqli_query($conn, $query);
     }
     
     .btn-outline-secondary {
-        border-radius: 8px;
         padding: 8px 16px;
+    }
+    
+    .modal-content {
+        border-radius: 0.5rem;
     }
 </style>

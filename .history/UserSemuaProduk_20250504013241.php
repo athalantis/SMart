@@ -8,7 +8,7 @@ $result = mysqli_query($conn, $query);
 ?>
 
 <div style="padding-top: 100px;">
-    <div class="">
+    <div class="container mt-5">
         <h3 class="mb-4 text-center">Semua Produk Kami</h3>
 
         <!-- Search and Filter Section -->
@@ -33,7 +33,7 @@ $result = mysqli_query($conn, $query);
         </div>
 
         <!-- Products List -->
-        <div id="product-list">
+        <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center" id="product-list">
             <!-- Product list will be loaded here via AJAX -->
         </div>
     </div>

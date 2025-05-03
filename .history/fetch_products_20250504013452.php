@@ -218,46 +218,4 @@ $result = mysqli_query($conn, $query);
 </script>
 
 <style>
-    .card {
-        border-radius: 10px;
-        transition: transform 0.2s, box-shadow 0.2s;
-        border: none;
-    }
-    
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-    
-    .card-img-container {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        background-color: #f8f9fa;
-    }
-    
-    .object-fit-cover {
-        object-fit: cover;
-        object-position: center;
-    }
-    
-    .modal-content {
-        border-radius: 10px;
-    }
-    
-    .btn-primary {
-        background-color: #0d6efd;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 8px;
-        font-weight: 500;
-    }
-    
-    .btn-primary:hover {
-        background-color: #0b5ed7;
-    }
-    
-    .btn-outline-secondary {
-        border-radius: 8px;
-        padding: 8px 16px;
-    }
 </style>

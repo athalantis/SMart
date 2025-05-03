@@ -8,7 +8,7 @@ $result = mysqli_query($conn, $query);
 ?>
 
 <div style="padding-top: 100px;">
-    <div class="">
+    <div class="container mt-5">
         <h3 class="mb-4 text-center">Semua Produk Kami</h3>
 
         <!-- Search and Filter Section -->

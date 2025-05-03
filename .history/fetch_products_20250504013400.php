@@ -130,6 +130,32 @@ $result = mysqli_query($conn, $query);
                         </div>
                     </div>
                 </div>
+
+                <!-- gap -->
+
+                <div class="col-sm-5 col-md-3 me-3 mb-4">
+            <div class="card h-100 hovered-card">
+                <a href="#">
+                    <img class="card-img-top" 
+                        src="./product_picture/<?php echo htmlspecialchars($row['gambar_produk']); ?>" 
+                        alt="<?php echo htmlspecialchars($row['nama_produk']); ?>" 
+                        style="height: 200px; object-fit: cover; border-top-left-radius: 0.5rem; border-top-right-radius: 0.5rem;" />
+                    <p class="card-title text-center mt-2">Toko Saya</p>
+                    <div class="card-body">
+                        <p class="card-text fw-bold"><?php echo htmlspecialchars($row['nama_produk']); ?></p>
+                        <p class="card-price text-success">Rp. <?php echo number_format($row['harga'], 0, ',', '.'); ?></p>
+                        <p class="card-location">🚚 Tersedia</p>
+                        <p class="card-rating">⭐ 4.9 | Stok: <?php echo intval($row['stok']); ?> tersedia</p>
+                        <button type="button" 
+                                class="btn rounded-pill btn-primary w-100" 
+                                onclick="openOrderModal(<?php echo $row['produk_id']; ?>, <?php echo $row['stok']; ?>)">
+                            Beli Sekarang
+                        </button>
+                    </div>
+                </a>
+            </div>
+        </div>
+
             <?php endwhile; ?>
         <?php else: ?>
             <div class="col-12">

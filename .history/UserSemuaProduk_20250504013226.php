@@ -8,7 +8,7 @@ $result = mysqli_query($conn, $query);
 ?>
 
 <div style="padding-top: 100px;">
-    <div class="">
+    <div class="container mt-5">
         <h3 class="mb-4 text-center">Semua Produk Kami</h3>
 
         <!-- Search and Filter Section -->
@@ -33,9 +33,25 @@ $result = mysqli_query($conn, $query);
         </div>
 
         <!-- Products List -->
-        <div id="product-list">
-            <!-- Product list will be loaded here via AJAX -->
-        </div>
+        <div class="container my-5">
+    <h3 class="text-center mb-4">Semua Produk</h3>
+    
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center" id="product-list">
+        <!-- Produk akan dimuat dari fetch_products.php via AJAX -->
+    </div>
+</div>
+
+<script>
+    // Load product data from fetch_products.php
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch('fetch_products.php')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('product-list').innerHTML = data;
+            });
+    });
+</script>
+
     </div>
 </div>
 

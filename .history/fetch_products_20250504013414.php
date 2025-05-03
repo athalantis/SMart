@@ -97,39 +97,31 @@ $result = mysqli_query($conn, $query);
         <?php if (mysqli_num_rows($result) > 0): ?>
             <?php while ($row = mysqli_fetch_assoc($result)): ?>
                 <?php $stok = (int) $row['stok']; ?>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-img-container" style="height: 200px; overflow: hidden;">
-                            <img src="./product_picture/<?= htmlspecialchars($row['gambar_produk']) ?>" 
-                                 class="card-img-top img-fluid h-100 w-100 object-fit-cover" 
-                                 alt="<?= htmlspecialchars($row['nama_produk']) ?>">
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <div class="mb-2">
-                                <small class="text-muted">Toko Saya</small>
-                                <h5 class="card-title mb-1"><?= htmlspecialchars($row['nama_produk']) ?></h5>
-                                <p class="card-price text-success fw-bold mb-1">Rp <?= number_format($row['harga'], 0, ',', '.') ?></p>
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="badge bg-<?= $stok > 0 ? 'success' : 'danger' ?>">
-                                        <?= $stok > 0 ? 'In Stock' : 'Out of Stock' ?>
-                                    </span>
-                                    <small class="text-muted">Stock: <?= $stok ?></small>
-                                </div>
-                                <div class="d-flex align-items-center mb-3">
-                                    <span class="text-warning">★ ★ ★ ★ ★</span>
-                                    <small class="text-muted ms-1">4.9</small>
-                                </div>
-                            </div>
-                            <button type="button"
+                   <div class="col-sm-5 col-md-3 me-3 mb-4">
+            <div class="card h-100 hovered-card">
+                <a href="#">
+                    <img class="card-img-top" 
+                        src="./product_picture/<?php echo htmlspecialchars($row['gambar_produk']); ?>" 
+                        alt="<?php echo htmlspecialchars($row['nama_produk']); ?>" 
+                        style="height: 200px; object-fit: cover; border-top-left-radius: 0.5rem; border-top-right-radius: 0.5rem;" />
+                    <p class="card-title text-center mt-2">Toko Saya</p>
+                    <div class="card-body">
+                        <p class="card-text fw-bold"><?php echo htmlspecialchars($row['nama_produk']); ?></p>
+                        <p class="card-price text-success">Rp. <?php echo number_format($row['harga'], 0, ',', '.'); ?></p>
+                        <p class="card-location">🚚 Tersedia</p>
+                        <p class="card-rating">⭐ 4.9 | Stok: <?php echo intval($row['stok']); ?> tersedia</p>
+                        <button type="button"
                                     class="btn btn-primary mt-auto <?= $stok <= 0 ? 'disabled' : '' ?>"
                                     data-bs-toggle="modal"
                                     data-bs-target="#orderModal"
                                     onclick="<?= $stok > 0 ? "setOrderModal({$row['produk_id']}, {$stok}, '" . addslashes(htmlspecialchars($row['nama_produk'])) . "')" : '' ?>">
                                 Buy Now
                             </button>
-                        </div>
                     </div>
-                </div>
+                </a>
+            </div>
+        </div>
+
             <?php endwhile; ?>
         <?php else: ?>
             <div class="col-12">

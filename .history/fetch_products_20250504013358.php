@@ -130,6 +130,11 @@ $result = mysqli_query($conn, $query);
                         </div>
                     </div>
                 </div>
+
+                <!-- gap -->
+
+                
+
             <?php endwhile; ?>
         <?php else: ?>
             <div class="col-12">
