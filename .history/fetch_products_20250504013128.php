@@ -47,6 +47,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         $response['message'] = 'Failed to place order: ' . mysqli_error($conn);
     }
 
+    mysqli_stmt_close($stock_stmt);
+    mysqli_stmt_close($insert_stmt);
+    echo json_encode($response);
+    exit;
+}
+
+// ===== AUTH CHECK =====
+if (!isset($_SESSION['user_id'])) {
+    echo '<div class="col-12 text-center"><div class="alert alert-danger">Please log in to view products.</div></div>';
+    exit;
+}
+
 // ===== FETCH PRODUCTS =====
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 $stockFilter = $_GET['stockFilter'] ?? '';
@@ -80,51 +92,69 @@ if ($purchasedFilter) {
 $result = mysqli_query($conn, $query);
 ?>
 
-<div class="container mt-4">
-    <div class="row g-4">
+<style>
+    .hovered-card:hover {
+    transform: scale(1.02);
+    transition: 0.3s ease;
+}
+
+</style>
+
+<div class="container mt-5">
+    <div class="row">
         <?php if (mysqli_num_rows($result) > 0): ?>
             <?php while ($row = mysqli_fetch_assoc($result)): ?>
                 <?php $stok = (int) $row['stok']; ?>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-img-container" style="height: 200px; overflow: hidden;">
-                            <img src="./product_picture/<?= htmlspecialchars($row['gambar_produk']) ?>" 
-                                 class="card-img-top img-fluid h-100 w-100 object-fit-cover" 
-                                 alt="<?= htmlspecialchars($row['nama_produk']) ?>">
-                        </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <img src="./product_picture/<?= htmlspecialchars($row['gambar_produk']) ?>"
+                             class="card-img-top img-fluid rounded-top"
+                             alt="<?= htmlspecialchars($row['nama_produk']) ?>"
+                             style="height: 200px; object-fit: cover;" />
+                             
                         <div class="card-body d-flex flex-column">
-                            <div class="mb-2">
-                                <small class="text-muted">Toko Saya</small>
-                                <h5 class="card-title mb-1"><?= htmlspecialchars($row['nama_produk']) ?></h5>
-                                <p class="card-price text-success fw-bold mb-1">Rp <?= number_format($row['harga'], 0, ',', '.') ?></p>
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="badge bg-<?= $stok > 0 ? 'success' : 'danger' ?>">
-                                        <?= $stok > 0 ? 'In Stock' : 'Out of Stock' ?>
-                                    </span>
-                                    <small class="text-muted">Stock: <?= $stok ?></small>
-                                </div>
-                                <div class="d-flex align-items-center mb-3">
-                                    <span class="text-warning">★ ★ ★ ★ ★</span>
-                                    <small class="text-muted ms-1">4.9</small>
-                                </div>
+                            <small class="text-muted d-block mb-1 text-center">Toko Saya</small>
+                            <h6 class="card-title text-center fw-semibold mb-2"><?= htmlspecialchars($row['nama_produk']) ?></h6>
+                            
+                            <p class="text-success fw-bold text-center mb-2">
+                                Rp <?= number_format($row['harga'], 0, ',', '.') ?>
+                            </p>
+                            
+                            <p class="text-center text-secondary mb-2">
+                                🚚 Tersedia | ⭐ 4.9
+                            </p>
+                            
+                            <div class="d-flex justify-content-between align-items-center mb-3 px-2">
+                                <span class="badge bg-<?= $stok > 0 ? 'success' : 'danger' ?>">
+                                    <?= $stok > 0 ? 'Tersedia' : 'Habis' ?>
+                                </span>
+                                <small class="text-muted">Stok: <?= $stok ?></small>
                             </div>
+                            
                             <button type="button"
-                                    class="btn btn-primary mt-auto <?= $stok <= 0 ? 'disabled' : '' ?>"
+                                    class="btn btn-primary rounded-pill w-100 mt-auto <?= $stok <= 0 ? 'disabled' : '' ?>"
                                     data-bs-toggle="modal"
                                     data-bs-target="#orderModal"
                                     onclick="<?= $stok > 0 ? "setOrderModal({$row['produk_id']}, {$stok}, '" . addslashes(htmlspecialchars($row['nama_produk'])) . "')" : '' ?>">
-                                Buy Now
+                                Beli Sekarang
                             </button>
                         </div>
-
                     </div>
                 </div>
             <?php endwhile; ?>
         <?php else: ?>
+            <div class="col-12">
+                <div class="alert alert-info text-center">Tidak ada produk ditemukan.</div>
+            </div>
         <?php endif; ?>
     </div>
 </div>
 
+
+
+<!-- Order Modal -->
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Order Product</h5>
@@ -139,12 +169,14 @@ $result = mysqli_query($conn, $query);
                     </div>
                     <div class="mb-3">
                         <label for="jumlah_pemesanan" class="form-label">Quantity</label>
-
+                        <input type="number" class="form-control" id="jumlah_pemesanan" name="jumlah_pemesanan" min="1" value="1" required>
+                        <div class="form-text">Available stock: <span id="stok_tersedia" class="fw-bold">0</span></div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="submitOrder()">Confirm Order</button>
             </div>
         </div>
     </div>
@@ -157,6 +189,10 @@ $result = mysqli_query($conn, $query);
         $('#produk_id').val(produk_id);
         $('#nama_produk').val(nama_produk);
         $('#stok_tersedia').text(stok);
+        $('#jumlah_pemesanan').attr({
+            'max': stok,
+            'value': 1
+        }).val(1);
         maxStock = stok;
     }
 
@@ -187,10 +223,54 @@ $result = mysqli_query($conn, $query);
                     alert('Error: ' + response.message);
                 }
             },
-
             error: function(xhr, status, error) {
                 alert('Error processing order: ' + error);
             }
         });
     }
 </script>
+
+<style>
+    .card {
+        border-radius: 10px;
+        transition: transform 0.2s, box-shadow 0.2s;
+        border: none;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .card-img-container {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background-color: #f8f9fa;
+    }
+    
+    .object-fit-cover {
+        object-fit: cover;
+        object-position: center;
+    }
+    
+    .modal-content {
+        border-radius: 10px;
+    }
+    
+    .btn-primary {
+        background-color: #0d6efd;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-weight: 500;
+    }
+    
+    .btn-primary:hover {
+        background-color: #0b5ed7;
+    }
+    
+    .btn-outline-secondary {
+        border-radius: 8px;
+        padding: 8px 16px;
+    }
+</style>

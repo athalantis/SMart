@@ -47,6 +47,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         $response['message'] = 'Failed to place order: ' . mysqli_error($conn);
     }
 
+    mysqli_stmt_close($stock_stmt);
+    mysqli_stmt_close($insert_stmt);
+    echo json_encode($response);
+    exit;
+}
+
+// ===== AUTH CHECK =====
+if (!isset($_SESSION['user_id'])) {
+    echo '<div class="col-12 text-center"><div class="alert alert-danger">Please log in to view products.</div></div>';
+    exit;
+}
+
 // ===== FETCH PRODUCTS =====
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 $stockFilter = $_GET['stockFilter'] ?? '';
@@ -116,15 +128,25 @@ $result = mysqli_query($conn, $query);
                                 Buy Now
                             </button>
                         </div>
-
                     </div>
                 </div>
+
+                <!-- gap -->
+
+                
+
             <?php endwhile; ?>
         <?php else: ?>
+            <div class="col-12">
+                <div class="alert alert-info text-center">No products found.</div>
+            </div>
         <?php endif; ?>
     </div>
 </div>
 
+<!-- Order Modal -->
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Order Product</h5>
@@ -139,12 +161,14 @@ $result = mysqli_query($conn, $query);
                     </div>
                     <div class="mb-3">
                         <label for="jumlah_pemesanan" class="form-label">Quantity</label>
-
+                        <input type="number" class="form-control" id="jumlah_pemesanan" name="jumlah_pemesanan" min="1" value="1" required>
+                        <div class="form-text">Available stock: <span id="stok_tersedia" class="fw-bold">0</span></div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="submitOrder()">Confirm Order</button>
             </div>
         </div>
     </div>
@@ -157,6 +181,10 @@ $result = mysqli_query($conn, $query);
         $('#produk_id').val(produk_id);
         $('#nama_produk').val(nama_produk);
         $('#stok_tersedia').text(stok);
+        $('#jumlah_pemesanan').attr({
+            'max': stok,
+            'value': 1
+        }).val(1);
         maxStock = stok;
     }
 
@@ -187,10 +215,54 @@ $result = mysqli_query($conn, $query);
                     alert('Error: ' + response.message);
                 }
             },
-
             error: function(xhr, status, error) {
                 alert('Error processing order: ' + error);
             }
         });
     }
 </script>
+
+<style>
+    .card {
+        border-radius: 10px;
+        transition: transform 0.2s, box-shadow 0.2s;
+        border: none;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .card-img-container {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background-color: #f8f9fa;
+    }
+    
+    .object-fit-cover {
+        object-fit: cover;
+        object-position: center;
+    }
+    
+    .modal-content {
+        border-radius: 10px;
+    }
+    
+    .btn-primary {
+        background-color: #0d6efd;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-weight: 500;
+    }
+    
+    .btn-primary:hover {
+        background-color: #0b5ed7;
+    }
+    
+    .btn-outline-secondary {
+        border-radius: 8px;
+        padding: 8px 16px;
+    }
+</style>

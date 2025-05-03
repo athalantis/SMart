@@ -47,6 +47,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         $response['message'] = 'Failed to place order: ' . mysqli_error($conn);
     }
 
+    mysqli_stmt_close($stock_stmt);
+    mysqli_stmt_close($insert_stmt);
+    echo json_encode($response);
+    exit;
+}
+
+// ===== AUTH CHECK =====
+if (!isset($_SESSION['user_id'])) {
+    echo '<div class="col-12 text-center"><div class="alert alert-danger">Please log in to view products.</div></div>';
+    exit;
+}
+
 // ===== FETCH PRODUCTS =====
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 $stockFilter = $_GET['stockFilter'] ?? '';
@@ -81,50 +93,44 @@ $result = mysqli_query($conn, $query);
 ?>
 
 <div class="container mt-4">
-    <div class="row g-4">
+    <div class="row">
         <?php if (mysqli_num_rows($result) > 0): ?>
             <?php while ($row = mysqli_fetch_assoc($result)): ?>
                 <?php $stok = (int) $row['stok']; ?>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-img-container" style="height: 200px; overflow: hidden;">
-                            <img src="./product_picture/<?= htmlspecialchars($row['gambar_produk']) ?>" 
-                                 class="card-img-top img-fluid h-100 w-100 object-fit-cover" 
-                                 alt="<?= htmlspecialchars($row['nama_produk']) ?>">
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <div class="mb-2">
-                                <small class="text-muted">Toko Saya</small>
-                                <h5 class="card-title mb-1"><?= htmlspecialchars($row['nama_produk']) ?></h5>
-                                <p class="card-price text-success fw-bold mb-1">Rp <?= number_format($row['harga'], 0, ',', '.') ?></p>
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="badge bg-<?= $stok > 0 ? 'success' : 'danger' ?>">
-                                        <?= $stok > 0 ? 'In Stock' : 'Out of Stock' ?>
-                                    </span>
-                                    <small class="text-muted">Stock: <?= $stok ?></small>
-                                </div>
-                                <div class="d-flex align-items-center mb-3">
-                                    <span class="text-warning">★ ★ ★ ★ ★</span>
-                                    <small class="text-muted ms-1">4.9</small>
-                                </div>
+                <div class="col-sm-5 col-md-3 me-3 mb-4">
+                    <div class="card h-100 hovered-card">
+                        <a href="#">
+                            <img class="card-img-top"
+                                 src="./product_picture/<?= htmlspecialchars($row['gambar_produk']) ?>"
+                                 alt="<?= htmlspecialchars($row['nama_produk']) ?>"
+                                 style="height: 200px; object-fit: cover; border-top-left-radius: .5rem; border-top-right-radius: .5rem;" />
+                            <p class="card-title text-center mt-2">Toko Saya</p>
+                            <div class="card-body">
+                                <p class="card-text fw-bold"><?= htmlspecialchars($row['nama_produk']) ?></p>
+                                <p class="card-price text-success">Rp. <?= number_format($row['harga'], 0, ',', '.') ?></p>
+                                <p class="card-location">🚚 <?= $stok > 0 ? 'Tersedia' : 'Habis' ?></p>
+                                <p class="card-rating">⭐ 4.9 | Stok: <?= $stok ?> tersedia</p>
+                                <button type="button"
+                                        class="btn rounded-pill btn-primary w-100 <?= $stok <= 0 ? 'disabled' : '' ?>"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#orderModal"
+                                        onclick="<?= $stok > 0 ? "setOrderModal({$row['produk_id']}, {$stok}, '" . addslashes(htmlspecialchars($row['nama_produk'])) . "')" : '' ?>">
+                                    Beli Sekarang
+                                </button>
                             </div>
-                            <button type="button"
-                                    class="btn btn-primary mt-auto <?= $stok <= 0 ? 'disabled' : '' ?>"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#orderModal"
-                                    onclick="<?= $stok > 0 ? "setOrderModal({$row['produk_id']}, {$stok}, '" . addslashes(htmlspecialchars($row['nama_produk'])) . "')" : '' ?>">
-                                Buy Now
-                            </button>
-                        </div>
-
+                        </a>
                     </div>
                 </div>
             <?php endwhile; ?>
         <?php else: ?>
+            <div class="col-12 text-center"><div class="alert alert-info">Belum ada produk yang ditemukan.</div></div>
         <?php endif; ?>
     </div>
 </div>
 
+<!-- MODAL -->
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Order Product</h5>
@@ -139,17 +145,22 @@ $result = mysqli_query($conn, $query);
                     </div>
                     <div class="mb-3">
                         <label for="jumlah_pemesanan" class="form-label">Quantity</label>
-
+                        <input type="number" class="form-control" id="jumlah_pemesanan" name="jumlah_pemesanan" min="1" required>
+                        <small class="form-text text-muted">Available stock: <span id="stok_tersedia"></span></small>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="submitOrder()">Order Now</button>
             </div>
         </div>
     </div>
 </div>
 
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     let maxStock = 0;
 
@@ -157,6 +168,7 @@ $result = mysqli_query($conn, $query);
         $('#produk_id').val(produk_id);
         $('#nama_produk').val(nama_produk);
         $('#stok_tersedia').text(stok);
+        $('#jumlah_pemesanan').attr('max', stok).val(1);
         maxStock = stok;
     }
 
@@ -177,16 +189,20 @@ $result = mysqli_query($conn, $query);
                 produk_id: produk_id,
                 jumlah_pemesanan: jumlah_pemesanan
             },
-            dataType: 'json',
             success: function(response) {
-                if (response.success) {
-                    alert(response.message);
-                    $('#orderModal').modal('hide');
-                    setTimeout(() => location.reload(), 500);
-                } else {
-                    alert('Error: ' + response.message);
-                }
-            },
+    try {
+        // Langsung pakai response
+        if (response.success) {
+            alert(response.message);
+            $('#orderModal').modal('hide');
+            setTimeout(() => location.reload(), 500);
+        } else {
+            alert('Error: ' + response.message);
+        }
+    } catch (e) {
+        alert('Error: ' + e.message);
+    }
+},
 
             error: function(xhr, status, error) {
                 alert('Error processing order: ' + error);
