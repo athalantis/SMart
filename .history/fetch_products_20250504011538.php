@@ -159,7 +159,8 @@ $result = mysqli_query($conn, $query);
 </div>
 
 <!-- SCRIPTS -->
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     let maxStock = 0;
 
@@ -189,20 +190,19 @@ $result = mysqli_query($conn, $query);
                 jumlah_pemesanan: jumlah_pemesanan
             },
             success: function(response) {
-    try {
-        // Langsung pakai response
-        if (response.success) {
-            alert(response.message);
-            $('#orderModal').modal('hide');
-            setTimeout(() => location.reload(), 500);
-        } else {
-            alert('Error: ' + response.message);
-        }
-    } catch (e) {
-        alert('Error: ' + e.message);
-    }
-},
-
+                try {
+                    const res = JSON.parse(response);
+                    if (res.success) {
+                        alert(res.message);
+                        $('#orderModal').modal('hide');
+                        setTimeout(() => location.reload(), 500);
+                    } else {
+                        alert('Error: ' + res.message);
+                    }
+                } catch (e) {
+                    alert('Error parsing response: ' + e.message);
+                }
+            },
             error: function(xhr, status, error) {
                 alert('Error processing order: ' + error);
             }
