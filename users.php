@@ -2,22 +2,19 @@
 include ".includes/header.php";
 $title = "Users Management";
 include ".includes/toast_notification.php";
-include "config.php"; // Pastikan ada koneksi ke database
+include "config.php";
 
-// Proses Hapus User Jika Ada Request
+// Proses Hapus User
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['delete_id'])) {
     $user_id = $_POST['delete_id'];
-
-    // Gunakan prepared statement untuk keamanan
     $stmt = $conn->prepare("DELETE FROM users WHERE user_id = ?");
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
     $stmt->close();
-
-    return redirect("users.php"); // Refresh halaman setelah delete
+    return redirect("users.php");
 }
 
-// Ambil data pengguna dari database
+// Ambil data user
 $users = $conn->query("SELECT * FROM users");
 ?>
 
@@ -69,7 +66,6 @@ $users = $conn->query("SELECT * FROM users");
 <?php include ".includes/footer.php"; ?>
 
 <?php
-// Fungsi Redirect ala Laravel
 function redirect($url) {
     echo "<script>window.location.href='$url';</script>";
     exit;

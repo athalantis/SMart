@@ -5,7 +5,6 @@ include(".includes/header.php");
 $title = "Admin's Dashboard";
 include('.includes/toast_notification.php');
 
-// Ambil data distributor dari database
 $result = $conn->query("SELECT * FROM distributor");
 $distributors = $result->fetch_all(MYSQLI_ASSOC);
 ?>
@@ -26,20 +25,32 @@ $distributors = $result->fetch_all(MYSQLI_ASSOC);
                             <th>ID</th>
                             <th>Nama</th>
                             <th>Kontak</th>
-                            <th>Aksi</th>
+                            <th>Pilihan</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($distributors as $d): ?>
-                            <tr>
-                                <td class="text-center"><?= $d['distributor_id'] ?></td>
-                                <td><?= htmlspecialchars($d['nama']) ?></td>
-                                <td class="text-center"><?= htmlspecialchars($d['kontak']) ?></td>
-                                <td class="text-center">
-                                    <button class="btn btn-warning btn-sm" onclick="openEditModal(<?= $d['distributor_id'] ?>, '<?= htmlspecialchars($d['nama']) ?>', '<?= htmlspecialchars($d['kontak']) ?>')">✏️ Edit</button>
-                                    <button class="btn btn-danger btn-sm" onclick="hapusDistributor(<?= $d['distributor_id'] ?>)">🗑️ Hapus</button>
-                                </td>
-                            </tr>
+                        <?php foreach ($distributors as $i => $d): ?>
+                        <tr>
+                            <td class="text-center"><?= $i + 1 ?></td>
+                            <td><?= htmlspecialchars($d['nama']) ?></td>
+                            <td class="text-center"><?= htmlspecialchars($d['kontak']) ?></td>
+                            <td class="text-center">
+                                <div class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a href="#" class="dropdown-item"
+                                            onclick="openEditModal(<?= $d['distributor_id'] ?>, '<?= htmlspecialchars($d['nama']) ?>', '<?= htmlspecialchars($d['kontak']) ?>')">
+                                            <i class="bx bx-edit-alt me-1"></i> Edit
+                                        </a>
+                                        <a href="#" class="dropdown-item" onclick="hapusDistributor(<?= $d['distributor_id'] ?>)">
+                                            <i class="bx bx-trash me-1"></i> Hapus
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
@@ -48,7 +59,7 @@ $distributors = $result->fetch_all(MYSQLI_ASSOC);
     </div>
 </div>
 
-<!-- Modal Tambah Distributor -->
+<!-- Modal Tambah -->
 <div class="modal fade" id="modalTambah" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -66,9 +77,9 @@ $distributors = $result->fetch_all(MYSQLI_ASSOC);
                         <label class="form-label">Kontak</label>
                         <input type="text" name="kontak" class="form-control">
                     </div>
-                    <div class="text-end">
-                        <button type="button" onclick="tambahDistributor()" class="btn btn-success">Simpan</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" onclick="tambahDistributor()" class="btn btn-primary">Simpan</button>
                     </div>
                 </form>
             </div>
@@ -76,7 +87,7 @@ $distributors = $result->fetch_all(MYSQLI_ASSOC);
     </div>
 </div>
 
-<!-- Modal Edit Distributor -->
+<!-- Modal Edit -->
 <div class="modal fade" id="modalEdit" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -95,9 +106,9 @@ $distributors = $result->fetch_all(MYSQLI_ASSOC);
                         <label class="form-label">Kontak</label>
                         <input type="text" name="kontak" id="editKontak" class="form-control">
                     </div>
-                    <div class="text-end">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
                         <button type="button" onclick="updateDistributor()" class="btn btn-primary">Update</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                     </div>
                 </form>
             </div>
@@ -109,22 +120,18 @@ $distributors = $result->fetch_all(MYSQLI_ASSOC);
 
 <script>
     function openTambahModal() {
-        let modal = new bootstrap.Modal(document.getElementById("modalTambah"));
-        modal.show();
+        new bootstrap.Modal(document.getElementById("modalTambah")).show();
     }
 
     function openEditModal(id, nama, kontak) {
         document.getElementById("editId").value = id;
         document.getElementById("editNama").value = nama;
         document.getElementById("editKontak").value = kontak;
-
-        let modal = new bootstrap.Modal(document.getElementById("modalEdit"));
-        modal.show();
+        new bootstrap.Modal(document.getElementById("modalEdit")).show();
     }
 
     function tambahDistributor() {
         let form = new FormData(document.getElementById("formTambah"));
-
         fetch("backend_distributor.php", {
             method: "POST",
             body: form

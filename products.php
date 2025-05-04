@@ -1,14 +1,15 @@
 <?php
-include ".includes/header.php";
+include("config.php"); // Koneksi ke database
+include(".includes/header.php");
+
 $title = "Admin's Dashboard";
-include ".includes/toast_notification.php";
-include "config.php"; // Koneksi database
+include('.includes/toast_notification.php');
 
 // Handle hapus produk
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['hapus_produk'])) {
     $id = $_POST['produk_id'];
-    
-    // Ambil gambar produk sebelum dihapus
+
+    // Ambil gambar
     $stmt = $conn->prepare("SELECT gambar_produk FROM produk WHERE produk_id = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
@@ -20,10 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['hapus_produk'])) {
         @unlink("product_picture/" . $produk['gambar_produk']);
     }
 
-    // Hapus produk dari database
+    // Hapus produk
     $stmt = $conn->prepare("DELETE FROM produk WHERE produk_id = ?");
     $stmt->bind_param("i", $id);
-    
     if ($stmt->execute()) {
         echo "<script>alert('Produk berhasil dihapus.'); window.location.href='dashboard.php';</script>";
     } else {
@@ -32,11 +32,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['hapus_produk'])) {
     $stmt->close();
 }
 
-// Query produk dengan informasi distributor
+// Query produk + distributor
 $query = "SELECT p.produk_id, p.nama_produk, p.harga, p.stok, p.gambar_produk, d.nama AS nama_distributor, p.recommendations
           FROM produk p
           LEFT JOIN distributor d ON p.distributor_id = d.distributor_id";
-$result = mysqli_query($conn, $query);
+$result = $conn->query($query);
 ?>
 
 <div class="container-xxl flex-grow-1 container-p-y">
@@ -96,28 +96,27 @@ $result = mysqli_query($conn, $query);
 </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    // AJAX untuk mengupdate status rekomendasi
-    $(document).on('change', '.recommendation-toggle', function() {
-        var productId = $(this).data('id');
-        var recommendationStatus = $(this).prop('checked') ? 1 : 0;
+    // AJAX toggle rekomendasi
+    document.querySelectorAll('.recommendation-toggle').forEach(toggle => {
+        toggle.addEventListener('change', function () {
+            const produk_id = this.dataset.id;
+            const recommendations = this.checked ? 1 : 0;
 
-        $.ajax({
-            url: 'update_recommendation.php',
-            type: 'POST',
-            data: {
-                produk_id: productId,
-                recommendations: recommendationStatus
-            },
-            success: function(response) {
-                alert(response.message); // Show response message
-            },
-            error: function() {
-                alert('Gagal memperbarui status rekomendasi.');
-            }
+            fetch('update_recommendation.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: new URLSearchParams({produk_id, recommendations})
+            })
+            .then(res => res.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch(() => {
+                alert("Gagal memperbarui status rekomendasi.");
+            });
         });
     });
 </script>
 
-<?php include ".includes/footer.php"; ?>
+<?php include(".includes/footer.php"); ?>
