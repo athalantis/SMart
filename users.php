@@ -21,7 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['delete_id'])) {
 $users = $conn->query("SELECT * FROM users");
 ?>
 
-<div class="container mt-4">
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-body">
     <h2 class="text-center mb-3">Manajemen Pengguna</h2>
     <a href="user_create.php" class="btn btn-primary mb-3">Tambah Pengguna</a>
 
@@ -56,6 +60,10 @@ $users = $conn->query("SELECT * FROM users");
             <?php endwhile; ?>
         </tbody>
     </table>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 <?php include ".includes/footer.php"; ?>

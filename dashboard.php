@@ -96,12 +96,12 @@ $result = mysqli_query($conn, $query);
             // Loop through products and create cards
             while ($row = mysqli_fetch_assoc($result)) {
             ?>
-            <div class="col-sm-5 col-md-3 me-3 mb-4">
+            <div class="col-sm-5 col-md-3 me-3">
                 <div class="card h-100 hovered-card">
                     <a href="#">
-                        <img class="card-img-top" 
+                        <img class="card-img-top img-fluid mx-auto d-block" 
                             src="./product_picture/<?php echo htmlspecialchars($row['gambar_produk']); ?>" 
-                            alt="<?php echo htmlspecialchars($row['nama_produk']); ?>" />
+                            alt="<?php echo htmlspecialchars($row['nama_produk']); ?>">
                         <p class="card-title">Toko Saya</p>
                         <div class="card-body">
                             <p class="card-text"><?php echo htmlspecialchars($row['nama_produk']); ?></p>

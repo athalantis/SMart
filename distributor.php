@@ -10,16 +10,17 @@ $result = $conn->query("SELECT * FROM distributor");
 $distributors = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 
-<div class="container-fluid mt-4">
-    <div class="row justify-content-center">
-        <div class="col-lg-10">
-            <div class="card p-4">
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-body"> 
                 <h2 class="mb-3 text-center">Daftar Distributor</h2>
                 <div class="d-flex justify-content-end mb-3">
                     <button onclick="openTambahModal()" class="btn btn-soft-primary">➕ Tambah Distributor</button>
                 </div>
 
-                <table class="table table-bordered table-striped table-hover">
+                <table id="datatable" class="table table-hover">
                     <thead class="table-dark text-center">
                         <tr>
                             <th>ID</th>
@@ -103,6 +104,8 @@ $distributors = $result->fetch_all(MYSQLI_ASSOC);
         </div>
     </div>
 </div>
+</div>
+
 
 <script>
     function openTambahModal() {

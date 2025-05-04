@@ -58,8 +58,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
 }
 ?>
-
-<div class="container mt-4">
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-body">
     <h2>Edit Produk</h2>
     <form method="POST" enctype="multipart/form-data">
         <div class="mb-3">
@@ -96,6 +99,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="submit" class="btn btn-success">Update</button>
         <a href="products.php" class="btn btn-secondary">Batal</a>
     </form>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 <?php include ".includes/footer.php"; ?>

@@ -35,7 +35,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<div class="container mt-4">
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-body"></div>
+<div class="container">
     <h2>Tambah Produk</h2>
     <form method="POST" enctype="multipart/form-data">
         <div class="mb-3">
@@ -67,9 +72,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <img id="preview" src="#" alt="Preview" class="img-fluid mt-3 d-none" style="max-height: 200px;">
             </div>
         </div>
+        <div class="mb-4">
         <button type="submit" class="btn btn-success">Simpan</button>
         <a href="products.php" class="btn btn-secondary">Batal</a>
+        </div>
     </form>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 <?php include ".includes/footer.php"; ?>

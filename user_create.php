@@ -22,7 +22,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<div class="container mt-4">
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-body"></div>
+<div class="container">
     <h2>Tambah Pengguna</h2>
     <form method="POST">
         <div class="mb-3">
@@ -44,9 +49,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <option value="admin">Admin</option>
             </select>
         </div>
+        <div class="mb-4">
         <button type="submit" class="btn btn-success">Simpan</button>
         <a href="users.php" class="btn btn-secondary">Batal</a>
+        </div>
     </form>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 <?php include ".includes/footer.php"; ?>

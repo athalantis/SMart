@@ -39,23 +39,28 @@ $query = "SELECT p.produk_id, p.nama_produk, p.harga, p.stok, p.gambar_produk, d
 $result = mysqli_query($conn, $query);
 ?>
 
-<div class="container mt-4">
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-body">
     <h2>Daftar Produk</h2>
     <a href="product_create.php" class="btn btn-primary mb-3">Tambah Produk</a>
-    <table class="table table-bordered">
+    <div class="table-responsive text-nowrap">
+            <table class="table">
         <thead>
             <tr>
-                <th>ID</th>
+                <th >ID</th>
                 <th>Nama Produk</th>
                 <th>Distributor</th>
                 <th>Harga</th>
                 <th>Stok</th>
                 <th>Gambar</th>
-                <th>Rekomendasi</th> <!-- New column for recommendations -->
+                <th>Rekomendasi</th> 
                 <th>Aksi</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-border-bottom-0">
             <?php while ($row = mysqli_fetch_assoc($result)) : ?>
                 <tr>
                     <td><?= $row['produk_id'] ?></td>
@@ -84,6 +89,11 @@ $result = mysqli_query($conn, $query);
             <?php endwhile; ?>
         </tbody>
     </table>
+    </div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
