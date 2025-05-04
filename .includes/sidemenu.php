@@ -81,54 +81,33 @@ $role = $_SESSION['role'] ?? 'user'; // Default role jika tidak ada
         <li class="menu-item">
             <a href="users.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-user"></i>
-              <div data-i18n="Users Panel">Users Panel</div>
+              <div data-i18n="Users Panel">Kontrol Pengguna</div>
             </a>
         </li>
 
         <li class="menu-item">
             <a href="products.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-pencil"></i>
-              <div data-i18n="Create Post">Create Posts (Product)</div>
+              <div data-i18n="Create Post">Mulai Pasarkan Produk</div>
             </a>
         </li>
 
         <li class="menu-item">
             <a href="distributor.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-category"></i>
-              <div data-i18n="Create Category">lihat distributor</div>
+              <div data-i18n="Create Category">Lihat Distributor</div>
             </a>
         </li>
 
         <li class="menu-item">
             <a href="admin_pemesanan.php" class="menu-link">
                       <i class="menu-icon tf-icons bx bx-list-ul"></i>
-              <div data-i18n="Create Category">lihat pemesanan</div>
+              <div data-i18n="Create Category">Lihat Pemesanan</div>
             </a>
         </li>
 
             
         <?php endif; ?>
-
-        <!-- Setting -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Setting</span></li>
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-              <i class="menu-icon tf-icons bx bx-user-circle"></i>
-              <div data-i18n="Posts">Akun</div>
-            </a>
-            <ul class="menu-sub">
-              <li class="menu-item">
-                <a href="kategori.php" class="menu-link">
-                  <div data-i18n="Input groups">Pengaturan akun</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="auth/logout.php" class="menu-link">
-                  <div data-i18n="Input groups">Logout</div>
-                </a>
-              </li>
-            </ul>
-        </li>
     </ul>
 </aside>
 <!-- / Menu -->

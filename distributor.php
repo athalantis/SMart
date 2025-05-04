@@ -20,7 +20,7 @@ $distributors = $result->fetch_all(MYSQLI_ASSOC);
                 </div>
 
                 <table id="datatable" class="table table-hover">
-                    <thead class="table-dark text-center">
+                    <thead class="table text-center">
                         <tr>
                             <th>ID</th>
                             <th>Nama</th>

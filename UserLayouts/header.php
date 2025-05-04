@@ -90,20 +90,17 @@
     <!-- Navbar awal -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark shadow main-color">
     <div class="container">
-        <a class="navbar-brand" href="#">Toko Saya</a>
+        <a class="navbar-brand" href="#">SMart</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-center">
                 <li class="nav-item me-4">
-                    <a class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'dashboard.php') ? 'active' : ''; ?>" aria-current="<?php echo (basename($_SERVER['PHP_SELF']) == 'dashboard.php') ? 'page' : ''; ?>" href="../dashboard.php">Home</a>
+                    <a class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'dashboard.php') ? 'active' : ''; ?>" aria-current="<?php echo (basename($_SERVER['PHP_SELF']) == 'dashboard.php') ? 'page' : ''; ?>" href="./dashboard.php">Home</a>
                 </li>
                 <li class="nav-item me-4">
-                    <a class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'UserSemuaProduk.php') ? 'active' : ''; ?>" aria-current="<?php echo (basename($_SERVER['PHP_SELF']) == 'UserSemuaProduk.php') ? 'page' : ''; ?>" href="../UserSemuaProduk.php">semua produk kami</a>
-                </li>
-                <li class="nav-item me-4">
-                    <a class="nav-link" href="promo.html">Promo</a>
+                    <a class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'UserSemuaProduk.php') ? 'active' : ''; ?>" aria-current="<?php echo (basename($_SERVER['PHP_SELF']) == 'UserSemuaProduk.php') ? 'page' : ''; ?>" href="../UserSemuaProduk.php">Semua Produk</a>
                 </li>
                 <li class="nav-item me-4">
                     <a class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'pemesanan.php') ? 'active' : ''; ?>" href="pemesanan.php">
@@ -127,7 +124,7 @@
                         
                     </ul>
                 </li>
-                <a href="auth/logout.php">logout</a>
+                <a href="auth/logout.php">Logout</a>
             </ul>   
         </div>
     </div>

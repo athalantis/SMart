@@ -13,18 +13,17 @@ $result = mysqli_query($conn, $query);
     <!-- Navbar akhir -->
 
     <!-- banner awal -->
-     <style>
-        
+    <style> 
         #banner{
             height: 92vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(img/banner.jpg);
             background-size: cover;
             background-position:bottom 75% center;
         }
-     </style>
+    </style>
     <div id="banner" class="container-fluid banner d-flex align-items-center">
         <div class="container">
-            <p class="text-white text-center mb-1 fs-2">Selamat Datang Di Website Kami<i class="bi bi-emoji-smile"></i></p>
+            <p class="text-white text-center mb-1 fs-2">Selamat Datang Di Website Kami <i class="bi bi-emoji-smile"></i></p>
             <p class="text-white text-center mb-3 fs-3">Silahkan Cari disini!</p>
             <div class="col-md-8 offset-md-2">
                 <div class="input-group input-group-md mb-3">
@@ -86,7 +85,7 @@ $result = mysqli_query($conn, $query);
         
         <div class="row text-center mb-4">
             <div class="col">
-                <h2>rekomendasi produk kami</h2>
+                <h2>Rekomendasi Produk Untuk Anda</h2>
             </div>
         </div>
 
@@ -97,12 +96,12 @@ $result = mysqli_query($conn, $query);
             while ($row = mysqli_fetch_assoc($result)) {
             ?>
             <div class="col-sm-5 col-md-3 me-3">
-                <div class="card h-100 hovered-card">
+                <div class="card h-100 hovered-card"> 
                     <a href="#">
                         <img class="card-img-top img-fluid mx-auto d-block" 
                             src="./product_picture/<?php echo htmlspecialchars($row['gambar_produk']); ?>" 
                             alt="<?php echo htmlspecialchars($row['nama_produk']); ?>">
-                        <p class="card-title">Toko Saya</p>
+                        <p class="card-title">SMart</p>
                         <div class="card-body">
                             <p class="card-text"><?php echo htmlspecialchars($row['nama_produk']); ?></p>
                             <p class="card-price">Rp. <?php echo number_format($row['harga'], 0, ',', '.'); ?></p>
@@ -122,7 +121,7 @@ $result = mysqli_query($conn, $query);
 
         <div class="row text-center">
             <div class="col mt-4">
-                <a class="btn btn-outline-warning" href="#" role="button">Lihat Semua Produk</a>
+                <a class="btn btn-outline-warning" href="semua_produk.php" role="button">Lihat Semua Produk</a>
             </div>
         </div>
 
@@ -147,7 +146,7 @@ $result = mysqli_query($conn, $query);
                         </div>
                         <div class="mt-2 text-white text-center">
                             <h6>Delivery</h6>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis unde vel dolor! Placeat non quos laboriosam itaque aliquam</p>
+                            <p>Pesanan Anda akan kami kirim dengan cepat dan aman ke seluruh wilayah Indonesia menggunakan jasa ekspedisi Gus-EX.</p>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-3 mb-3 hovered-card-service">
@@ -158,7 +157,7 @@ $result = mysqli_query($conn, $query);
                         </div>
                         <div class="mt-2 text-white text-center">
                             <h6>Return and Refund</h6>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis unde vel dolor! Placeat non quos laboriosam itaque aliquam</p>
+                            <p>Jika produk tidak sesuai/rusak dapat dikembalikan dan kami akan melakukan penggantian/pengembalian dana..</p>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-3 mb-3 hovered-card-service">
@@ -169,7 +168,7 @@ $result = mysqli_query($conn, $query);
                         </div>
                         <div class="mt-2 text-white text-center">
                             <h6>Customer Support</h6>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis unde vel dolor! Placeat non quos laboriosam itaque aliquam</p>
+                            <p>Kami siap membantu Anda kapan saja jika mengalami kendala atau memiliki pertanyaan seputar produk dan layanan.</p>
                         </div>
                     </div>
                 </div>

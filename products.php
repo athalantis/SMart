@@ -44,56 +44,56 @@ $result = $conn->query($query);
         <div class="col-md-12">
             <div class="card mb-4">
                 <div class="card-body">
-    <h2>Daftar Produk</h2>
-    <a href="product_create.php" class="btn btn-primary mb-3">Tambah Produk</a>
-    <div class="table-responsive text-nowrap">
-            <table class="table">
-        <thead>
-            <tr>
-                <th >ID</th>
-                <th>Nama Produk</th>
-                <th>Distributor</th>
-                <th>Harga</th>
-                <th>Stok</th>
-                <th>Gambar</th>
-                <th>Rekomendasi</th> 
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody class="table-border-bottom-0">
-            <?php while ($row = mysqli_fetch_assoc($result)) : ?>
-                <tr>
-                    <td><?= $row['produk_id'] ?></td>
-                    <td><?= htmlspecialchars($row['nama_produk']) ?></td>
-                    <td><?= htmlspecialchars($row['nama_distributor'] ?? 'Tidak Ada') ?></td>
-                    <td>Rp<?= number_format($row['harga'], 0, ',', '.') ?></td>
-                    <td><?= $row['stok'] ?></td>
-                    <td>
-                        <?php if (!empty($row['gambar_produk'])) : ?>
-                            <img src="product_picture/<?= htmlspecialchars($row['gambar_produk']) ?>" width="80" alt="Produk">
-                        <?php else : ?>
-                            <span class="text-muted">Tidak ada gambar</span>
-                        <?php endif; ?>
-                    </td>
-                    <td>
-                        <input type="checkbox" class="recommendation-toggle" data-id="<?= $row['produk_id'] ?>" <?= $row['recommendations'] ? 'checked' : '' ?>>
-                    </td>
-                    <td>
-                        <a href="product_edit.php?id=<?= $row['produk_id'] ?>" class="btn btn-warning btn-sm">Edit</a>
-                        <form method="POST" style="display:inline;">
-                            <input type="hidden" name="produk_id" value="<?= $row['produk_id'] ?>">
-                            <button type="submit" name="hapus_produk" class="btn btn-danger btn-sm" onclick="return confirm('Hapus produk ini?');">Hapus</button>
-                        </form>
-                    </td>
-                </tr>
-            <?php endwhile; ?>
-        </tbody>
-    </table>
+                <h2>Daftar Produk</h2>
+                    <a href="product_create.php" class="btn btn-primary mb-3">Tambah Produk</a>
+                    <div class="table-responsive text-nowrap">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th >ID</th>
+                                    <th>Nama Produk</th>
+                                    <th>Distributor</th>
+                                    <th>Harga</th>
+                                    <th>Stok</th>
+                                    <th>Gambar</th>
+                                    <th>Rekomendasi</th> 
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                                <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+                                    <tr>
+                                        <td><?= $row['produk_id'] ?></td>
+                                        <td><?= htmlspecialchars($row['nama_produk']) ?></td>
+                                        <td><?= htmlspecialchars($row['nama_distributor'] ?? 'Tidak Ada') ?></td>
+                                        <td>Rp<?= number_format($row['harga'], 0, ',', '.') ?></td>
+                                        <td><?= $row['stok'] ?></td>
+                                        <td>
+                                            <?php if (!empty($row['gambar_produk'])) : ?>
+                                                <img src="product_picture/<?= htmlspecialchars($row['gambar_produk']) ?>" width="80" alt="Produk">
+                                            <?php else : ?>
+                                                <span class="text-muted">Tidak ada gambar</span>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" class="recommendation-toggle" data-id="<?= $row['produk_id'] ?>" <?= $row['recommendations'] ? 'checked' : '' ?>>
+                                        </td>
+                                        <td>
+                                            <a href="product_edit.php?id=<?= $row['produk_id'] ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <form method="POST" style="display:inline;">
+                                                <input type="hidden" name="produk_id" value="<?= $row['produk_id'] ?>">
+                                                <button type="submit" name="hapus_produk" class="btn btn-danger btn-sm" onclick="return confirm('Hapus produk ini?');">Hapus</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-</div>
-</div>
-</div>
 </div>
 
 <script>
