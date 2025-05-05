@@ -50,14 +50,7 @@ $result = mysqli_query($conn, $query);
     <div id="banner" class="container-fluid banner d-flex align-items-center">
         <div class="container">
             <p class="text-white text-center mb-1 fs-2">Selamat Datang Di Website Kami <i class="bi bi-emoji-smile"></i></p>
-            <p class="text-white text-center mb-3 fs-3">Silahkan Cari disini!</p>
-            <div class="col-md-8 offset-md-2">
-                <div class="input-group input-group-md mb-3">
-                    <input type="text" id="search-input" class="form-control ps-5" placeholder="search" aria-label="search" aria-describedby="button-addon2">
-                    <button class="btn btn-md main-color" type="button" id="button-addon2"><i class="bi bi-search text-white"></i></button>
-                </div>
-            </div>
-            </div>
+            <p class="text-white text-center mb-3 fs-3">Your pleasure is our please</p>
         </div>
     </div>
 
