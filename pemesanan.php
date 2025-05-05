@@ -30,7 +30,7 @@ $result = $stmt->get_result();
 <div class="container mt-5">
 <br>  <br>  
     <div class="card shadow">
-        <div class="card-header bg-primary text-white">
+        <div class="card-header text-white" style="background-color: orange;">
             <h3 class="mb-0">Riwayat Pemesanan Anda</h3>
         </div>
         <div class="card-body">

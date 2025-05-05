@@ -58,7 +58,7 @@
                     ><i class="bi bi-envelope-plus fs-4"></i
                 ></a>
                 </li>
-                    <a href="../logout.php">Logout</a>
+                    <a href="../logout.php" style="color: white;">Logout</a>
                 </ul>   
             </div>
         </div>
