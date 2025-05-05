@@ -6,7 +6,7 @@
     <div class="app-brand justify-content-center">
       <a href="index.html" class="app-brand-link gap-2">
         <span class="app-brand-logo demo"></span>
-        <span class="app-brand-text demo text-uppercase fw-bolder">IdeKreatif</span>
+        <span class="app-brand-text demo text-uppercase fw-bolder">SMart Market</span>
       </a>
     </div>
     <!-- /Logo -->

@@ -1,7 +1,7 @@
 
 
 <div class="container-fluid py-3 footer-color2" style="margin-top: 200px;">
-
+    
         <div class="container">
             <h6 class="text-center mt-2" style="color: #7a7a7a;">Website Made With Group 16</h6>
         </div>

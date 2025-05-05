@@ -31,6 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $harga = $_POST['harga'];
     $stok = $_POST['stok'];
     $distributor_id = $_POST['distributor_id'];
+    $id_kategori = $_POST['id_kategori'];  
+
 
     if (!empty($_FILES['gambar_produk']['name'])) {
         $gambar = $_FILES['gambar_produk']['name'];
@@ -42,12 +44,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (!empty($produk['gambar_produk'])) {
                 unlink($upload_dir . $produk['gambar_produk']);
             }
-            $stmt = $conn->prepare("UPDATE produk SET nama_produk=?, harga=?, stok=?, gambar_produk=?, distributor_id=? WHERE produk_id=?");
-            $stmt->bind_param("siisii", $nama_produk, $harga, $stok, $gambar_path, $distributor_id, $id);
+            $stmt = $conn->prepare("UPDATE produk SET nama_produk=?, harga=?, stok=?, gambar_produk=?, distributor_id=?, id_kategori=? WHERE produk_id=?");
+            $stmt->bind_param("siisiii", $nama_produk, $harga, $stok, $gambar_path, $distributor_id, $id_kategori, $id);
         }
     } else {
-        $stmt = $conn->prepare("UPDATE produk SET nama_produk=?, harga=?, stok=?, distributor_id=? WHERE produk_id=?");
-        $stmt->bind_param("siiii", $nama_produk, $harga, $stok, $distributor_id, $id);
+        $stmt = $conn->prepare("UPDATE produk SET nama_produk=?, harga=?, stok=?, distributor_id=?, id_kategori=? WHERE produk_id=?");
+        $stmt->bind_param("siiiii", $nama_produk, $harga, $stok, $distributor_id, $id_kategori, $id);
     }
 
     if ($stmt->execute()) {
@@ -63,46 +65,62 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="col-md-12">
             <div class="card mb-4">
                 <div class="card-body">
-    <h2>Edit Produk</h2>
-    <form method="POST" enctype="multipart/form-data">
-        <div class="mb-3">
-            <label>Nama Produk</label>
-            <input type="text" name="nama_produk" class="form-control" value="<?= htmlspecialchars($produk['nama_produk']) ?>" required>
-        </div>
-        <div class="mb-3">
-            <label>Harga</label>
-            <input type="number" name="harga" class="form-control" value="<?= $produk['harga'] ?>" required>
-        </div>
-        <div class="mb-3">
-            <label>Stok</label>
-            <input type="number" name="stok" class="form-control" value="<?= $produk['stok'] ?>" required>
-        </div>
-        <div class="mb-3">
-            <label>Distributor</label>
-            <select name="distributor_id" class="form-control" required>
-                <option value="" disabled>Pilih Distributor</option>
-                <?php while ($row = $distributor_result->fetch_assoc()): ?>
-                    <option value="<?= $row['distributor_id']; ?>" <?= ($row['distributor_id'] == $produk['distributor_id']) ? 'selected' : ''; ?>>
-                        <?= htmlspecialchars($row['nama']); ?>
-                    </option>
-                <?php endwhile; ?>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label>Gambar Produk (Kosongkan jika tidak diubah)</label>
-            <div id="drop-area" class="border border-2 border-secondary p-4 text-center rounded">
-                <p>Drag & Drop gambar di sini atau klik untuk memilih</p>
-                <input type="file" name="gambar_produk" id="gambar_produk" class="form-control d-none" accept="image/*">
-                <img id="preview" src="product_picture/<?= htmlspecialchars($produk['gambar_produk']) ?>" alt="Preview" class="img-fluid mt-3" style="max-height: 200px;">
+                    <h2>Edit Produk</h2>
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label>Nama Produk</label>
+                            <input type="text" name="nama_produk" class="form-control" value="<?= htmlspecialchars($produk['nama_produk']) ?>" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Harga</label>
+                            <input type="number" name="harga" class="form-control" value="<?= $produk['harga'] ?>" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Stok</label>
+                            <input type="number" name="stok" class="form-control" value="<?= $produk['stok'] ?>" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Distributor</label>
+                            <select name="distributor_id" class="form-control" required>
+                                <option value="" disabled>Pilih Distributor</option>
+                                <?php while ($row = $distributor_result->fetch_assoc()): ?>
+                                    <option value="<?= $row['distributor_id']; ?>" <?= ($row['distributor_id'] == $produk['distributor_id']) ? 'selected' : ''; ?>>
+                                        <?= htmlspecialchars($row['nama']); ?>
+                                    </option>
+                                <?php endwhile; ?>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_kategori" class="form-label">Kategori</label>
+                            <select class="form-select" name="id_kategori" required>
+                                <!-- Mengambil data kategori dari database untuk mengisi opsi dropdown -->
+                                    <option value="" disabled selected>Pilih salah satu</option>
+                                    <?php
+                                        $query = "SELECT * FROM kategori"; // Sesuai nama tabel kamu
+                                        $result = $conn->query($query);
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<option value='" . $row["id_kategori"] . "'>" . $row["nama_kategori"] . "</option>";
+                                            }
+                                        }
+                                    ?>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label>Gambar Produk (Kosongkan jika tidak diubah)</label>
+                            <div id="drop-area" class="border border-2 border-secondary p-4 text-center rounded">
+                                <p>Drag & Drop gambar di sini atau klik untuk memilih</p>
+                                <input type="file" name="gambar_produk" id="gambar_produk" class="form-control d-none" accept="image/*">
+                                <img id="preview" src="product_picture/<?= htmlspecialchars($produk['gambar_produk']) ?>" alt="Preview" class="img-fluid mt-3" style="max-height: 200px;">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">Update</button>
+                        <a href="products.php" class="btn btn-secondary">Batal</a>
+                    </form>
+                </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-success">Update</button>
-        <a href="products.php" class="btn btn-secondary">Batal</a>
-    </form>
-</div>
-</div>
-</div>
-</div>
+    </div>
 </div>
 
 <?php include ".includes/footer.php"; ?>

@@ -5,7 +5,7 @@ include 'UserLayouts/header.php';
 include 'config.php';
 
 // Fetch products from the database
-$query = "SELECT*FROM produk";
+$query = "SELECT * FROM produk";
 $result = mysqli_query($conn, $query);
 ?>
 
@@ -34,7 +34,7 @@ $result = mysqli_query($conn, $query);
                             <button type="button" 
                                     class="btn rounded-pill btn-primary w-100" 
                                     onclick="openOrderModal(<?php echo $row['produk_id']; ?>, <?php echo $row['stok']; ?>)">
-                                Beli Sekarang
+                                    Beli Sekarang
                             </button>
                         </div>
                     </a>

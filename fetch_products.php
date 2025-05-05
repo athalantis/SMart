@@ -107,10 +107,10 @@ $result = mysqli_query($conn, $query);
                         <div class="card-body d-flex flex-column">
                             <div class="mb-2">
                                 <small class="text-muted">Toko Saya</small>
-                                <h5 class="card-title mb-1"><?= htmlspecialchars($row['nama_produk']) ?></h5>
-                                <p class="card-price text-success fw-bold mb-1">Rp <?= number_format($row['harga'], 0, ',', '.') ?></p>
+                                <h5 class="card-title mt-2 fs-5"><?= htmlspecialchars($row['nama_produk']) ?></h5>
+                                <p class="card-price main-color-f fw-bold mb-1">Rp <?= number_format($row['harga'], 0, ',', '.') ?></p>
                                 <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="badge bg-<?= $stok > 0 ? 'success' : 'danger' ?>">
+                                    <span class="main-color badge bg-<?= $stok > 0 ? '' : 'danger' ?>">
                                         <?= $stok > 0 ? 'In Stock' : 'Out of Stock' ?>
                                     </span>
                                     <small class="text-muted">Stock: <?= $stok ?></small>
@@ -121,10 +121,10 @@ $result = mysqli_query($conn, $query);
                                 </div>
                             </div>
                             <button type="button"
-                                    class="btn btn-primary mt-auto <?= $stok <= 0 ? 'disabled' : '' ?>"
+                                    class="btn main-color text-white mb-1 <?= $stok <= 0 ? 'disabled' : '' ?>"
                                     data-bs-toggle="modal"
                                     data-bs-target="#orderModal"
-                                    onclick="<?= $stok > 0 ? "setOrderModal({$row['produk_id']}, {$stok}, '" . addslashes(htmlspecialchars($row['nama_produk'])) . "')" : '' ?>">
+                                    onclick="<?= $stok > 0 ? "setOrderModal({$row['produk_id']}, {$stok}, '" . addslashes(htmlspecialchars($row['nama_produk'])) . "')" : '' ?>" style="margin-top: -10px;">
                                 Buy Now
                             </button>
                         </div>
@@ -220,12 +220,12 @@ $result = mysqli_query($conn, $query);
 <style>
     .card {
         border-radius: 10px;
-        transition: transform 0.2s, box-shadow 0.2s;
+        transition: transform 0.3s, box-shadow 0.2s;
         border: none;
     }
     
     .card:hover {
-        transform: translateY(-5px);
+        transform: scale(1.1);
         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
     

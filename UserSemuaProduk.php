@@ -1,8 +1,138 @@
+<!-- style cs -->
+<link rel="stylesheet" href="website.css">
+
 <?php
 include 'UserLayouts/header.php';
 include 'config.php'; // koneksi database
 ?>
 
+<!-- carousel awal -->
+    <div class="carousel">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mt-4">
+                        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button
+                                type="button"
+                                data-bs-target="#carouselExampleCaptions"
+                                data-bs-slide-to="0"
+                                class="active"
+                                aria-current="true"
+                                aria-label="Slide 1"
+                                ></button>
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                            </div>
+                            <di class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="./img/carousel/carousel4.jpg" class="d-block w-100" alt="..." />
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Diskon Akhir Bulan</h5>
+                                        <p>Hemat hingga 50% untuk koleksi terbaru musim ini!.</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="./img/carousel/carousel5.jpg" class="d-block w-100" alt="..." />
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Best Seller Minggu Ini</h5>
+                                        <p>Temukan produk favorit pelanggan dengan harga spesial.</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="./img/carousel/carousel6.jpg" class="d-block w-100" alt="..." />
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Gratis Ongkir!</h5>
+                                        <p>Pengiriman cepat dan gratis untuk semua pesanan di atas Rp150.000!.</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="./img/carousel/carousel7.jpg" class="d-block w-100" alt="..." />
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Koleksi Baru Telah Tiba</h5>
+                                        <p>Jangan lewatkan tren terbaru dengan desain eksklusif hanya di sini.</p>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- carousel akhir -->
+        
+<!-- kategori awal -->
+    <div class="kategori">
+        <div class="container">
+            <div class="container shadow p-3 bg-body rounded border border-1 justify-content-center mt-3">
+                <p class="fs-5 m-1">KATEGORI</p>
+                <div class="row">
+                    <div class="col-sm-4 col-md-2 mb-2">
+                        <div class="card-cate">
+                            <a href="kat-elek.php">
+                            <img src="./img/kategori/cate1.jpg" alt="Elektronik" class="img-size" />
+                            <p class="text-center">Elektronik</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-2 mb-2">
+                        <div class="card-cate">
+                            <a href="kat-fas.php">
+                            <img src="./img/kategori/cate2.webp" alt="Fashion" class="img-size" />
+                            <p class="text-center">Fashion</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-2 mb-2">
+                        <div class="card-cate">
+                            <a href="kat-tas.php">
+                            <img src="./img/kategori/cate3.webp" alt="Tas" class="img-size" />
+                            <p class="text-center">Tas</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-2 mb-2">
+                        <div class="card-cate">
+                            <a href="kat-dap.php">
+                            <img src="./img/kategori/cate4.webp" alt="Dapur" class="img-size" />
+                            <p class="text-center">Dapur</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-2 mb-4">
+                        <div class="card-cate">
+                            <a href="kat-mak.php">
+                            <img src="./img/kategori/cate5.webp" alt="Makanan" class="img-size" />
+                            <p class="text-center">Makanan</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-2 mb-2">
+                        <div class="card-cate">
+                            <a href="kategori/kat-kos.php">
+                            <img src="./img/kategori/cate6.webp" alt="Kosmetik" class="img-size" />
+                            <p class="text-center">Kosmeowtik</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- kategori akhir -->
+    
 <div style="padding-top: 80px;">
     <div class="container mt-4">
         <!-- Page Header -->
@@ -104,147 +234,3 @@ include 'config.php'; // koneksi database
         fetchProducts();
     });
 </script>
-
-<style>
-    /* Base Styles */
-    body {
-        background-color: #f8f9fa;
-    }
-    
-    /* Search Box Styling */
-    .search-box {
-        position: relative;
-        max-width: 500px;
-    }
-    
-    .search-box .form-control {
-        padding-left: 2.5rem;
-        border-radius: 8px;
-        border: 1px solid #e0e0e0;
-        transition: all 0.3s ease;
-        height: 45px;
-    }
-    
-    .search-box .form-control:focus {
-        border-color: #3498db;
-        box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
-    }
-    
-    /* Filter Select Styling */
-    .form-select, .form-select-sm {
-        border-radius: 8px;
-        border: 1px solid #e0e0e0;
-        transition: all 0.3s ease;
-        height: 35px;
-    }
-    
-    .form-select:focus, .form-select-sm:focus {
-        border-color: #3498db;
-        box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
-    }
-    
-    /* Card Styles */
-    .card {
-        border-radius: 10px;
-        transition: all 0.3s ease;
-        overflow: hidden;
-        border: none;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-    
-    .card-img-container {
-        background-color: #f8f9fa;
-        height: 180px;
-        overflow: hidden;
-    }
-    
-    .card-img-top {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-    }
-    
-    .card:hover .card-img-top {
-        transform: scale(1.05);
-    }
-    
-    .card-body {
-        padding: 1.25rem;
-    }
-    
-    .card-title {
-        font-size: 1rem;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        height: 2.8rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    /* Button Styles */
-    .btn-primary {
-        background-color: #0d6efd;
-        border: none;
-        padding: 0.5rem;
-        border-radius: 6px;
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
-    }
-    
-    .btn-primary:hover {
-        background-color: #0b5ed7;
-        transform: translateY(-2px);
-    }
-    
-    /* Badge Styles */
-    .badge {
-        font-size: 0.75rem;
-        font-weight: 500;
-        padding: 0.35em 0.65em;
-    }
-    
-    /* Alert Styles */
-    .alert-light {
-        background-color: #f8f9fa;
-        border-radius: 8px;
-        border: 1px solid #e0e0e0;
-    }
-    
-    /* Rating Stars */
-    .text-warning {
-        color: #ffc107 !important;
-    }
-    
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-        .card-title {
-            height: auto;
-            -webkit-line-clamp: 3;
-        }
-        
-        .search-box {
-            max-width: 100%;
-        }
-        
-        .d-flex.flex-wrap {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 1rem !important;
-        }
-        
-        .vr {
-            display: none;
-        }
-        
-        .form-select, .form-select-sm {
-            width: 100% !important;
-        }
-    }
-</style>

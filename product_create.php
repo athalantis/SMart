@@ -15,13 +15,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $distributor_id = $_POST['distributor_id'];
     $gambar = $_FILES['gambar_produk']['name'];
     $gambar_tmp = $_FILES['gambar_produk']['tmp_name'];
+    $kategori = $_POST['id_kategori'];
     
     $upload_dir = "product_picture/";
     $gambar_path = time() . "_" . basename($gambar);
     
     if (move_uploaded_file($gambar_tmp, $upload_dir . $gambar_path)) {
-        $stmt = $conn->prepare("INSERT INTO produk (nama_produk, harga, stok, gambar_produk, distributor_id) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("siisi", $nama_produk, $harga, $stok, $gambar_path, $distributor_id);
+        $stmt = $conn->prepare("INSERT INTO produk (nama_produk, harga, stok, gambar_produk, distributor_id, id_kategori) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("siisii", $nama_produk, $harga, $stok, $gambar_path, $distributor_id, $kategori);
 
         if ($stmt->execute()) {
             redirect("products.php");
@@ -55,6 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label>Stok</label>
             <input type="number" name="stok" class="form-control" required>
         </div>
+
         <div class="mb-3">
             <label>Distributor</label>
             <select name="distributor_id" class="form-control" required>
@@ -62,6 +64,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <?php while ($row = $distributor_result->fetch_assoc()): ?>
                     <option value="<?= $row['distributor_id']; ?>"><?= htmlspecialchars($row['nama']); ?></option>
                 <?php endwhile; ?>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="category_id" class="form-label">Kategori</label>
+            <select class="form-select" name="id_kategori" required>
+                <!-- Mengambil data kategori dari database untuk mengisi opsi dropdown -->
+                    <option value="" disabled selected>Pilih salah satu</option>
+                    <?php
+                        $query = "SELECT * FROM kategori"; // Sesuai nama tabel kamu
+                        $result = $conn->query($query);
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<option value='" . $row["id_kategori"] . "'>" . $row["nama_kategori"] . "</option>";
+                            }
+                        }
+                    ?>
             </select>
         </div>
         <div class="mb-3">

@@ -20,6 +20,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['hapus_produk'])) {
     if ($produk && !empty($produk['gambar_produk'])) {
         @unlink("product_picture/" . $produk['gambar_produk']);
     }
+    
+    // Lihat kategori
+    $query = "SELECT produk.*, kategori.nama_kategori 
+              FROM produk 
+              LEFT JOIN kategori ON produk.id_kategori = kategori.id_kategori";
+    $result = $conn->query($query);
+
 
     // Hapus produk
     $stmt = $conn->prepare("DELETE FROM produk WHERE produk_id = ?");
@@ -33,9 +40,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['hapus_produk'])) {
 }
 
 // Query produk + distributor
-$query = "SELECT p.produk_id, p.nama_produk, p.harga, p.stok, p.gambar_produk, d.nama AS nama_distributor, p.recommendations
+// Query produk + distributor + kategori
+$query = "SELECT 
+            p.produk_id, 
+            p.nama_produk, 
+            p.harga, 
+            p.stok, 
+            p.gambar_produk, 
+            d.nama AS nama_distributor, 
+            p.recommendations,
+            k.nama_kategori
           FROM produk p
-          LEFT JOIN distributor d ON p.distributor_id = d.distributor_id";
+          LEFT JOIN distributor d ON p.distributor_id = d.distributor_id
+          LEFT JOIN kategori k ON p.id_kategori = k.id_kategori";
 $result = $conn->query($query);
 ?>
 
@@ -56,6 +73,7 @@ $result = $conn->query($query);
                                     <th>Harga</th>
                                     <th>Stok</th>
                                     <th>Gambar</th>
+                                    <th>Kategori</th>
                                     <th>Rekomendasi</th> 
                                     <th>Aksi</th>
                                 </tr>
@@ -75,6 +93,7 @@ $result = $conn->query($query);
                                                 <span class="text-muted">Tidak ada gambar</span>
                                             <?php endif; ?>
                                         </td>
+                                        <td><?= htmlspecialchars($row['nama_kategori'] ?? 'Tidak ada kategori') ?></td>
                                         <td>
                                             <input type="checkbox" class="recommendation-toggle" data-id="<?= $row['produk_id'] ?>" <?= $row['recommendations'] ? 'checked' : '' ?>>
                                         </td>
