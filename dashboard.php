@@ -56,21 +56,7 @@ $result = mysqli_query($conn, $query);
 
     <!-- decor awal -->
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ff4400" fill-opacity="1" d="M0,96L40,112C80,128,160,160,240,154.7C320,149,400,107,480,117.3C560,128,640,192,720,202.7C800,213,880,171,960,133.3C1040,96,1120,64,1200,64C1280,64,1360,96,1400,112L1440,128L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg>
-    <!-- decor akhir -->
-        <!-- Products List -->
-        <div class="row g-3" id="product-list">
-            <!-- Product list will be loaded here via AJAX -->
-        </div>
-
-        <!-- Loading Indicator -->
-        <div id="loading-indicator" class="text-center my-5" style="display: none;">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-            <p class="mt-2 text-muted">Memuat produk...</p>
-        </div>
-    <!-- banner akhir -->
-
+    
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row text-center mt-5 mb-5">
             <div class="col">
